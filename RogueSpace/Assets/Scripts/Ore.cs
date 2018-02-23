@@ -4,10 +4,19 @@ using UnityEngine;
 
 public class Ore : MonoBehaviour {
 
+    private GameState _gameState;
+
+    private void Start()
+    {
+        _gameState = GameObject.Find("GameState").GetComponent<GameState>();
+    }
+
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
+            _gameState.AddOre(1);
             Destroy(gameObject);
         }
     }
