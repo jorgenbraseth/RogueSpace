@@ -68,27 +68,52 @@ public class MiningBeam : MonoBehaviour {
         }
     }
 
+    private bool IsPointerOverUIObject()
+    {
+        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+        eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+        return results.Count > 0;
+    }
+
     private void SelectMinable()
     {
-        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
-        {
-            RaycastHit hitInfo;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity, LayerMask.GetMask("Mineable")))
+            if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
+            {            
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                CastSelectionRay(ray);
+            }
+
+            for (int i = 0; i < Input.touchCount; ++i)
             {
-                if (_miningTarget != null)
+                if (Input.GetTouch(i).phase == TouchPhase.Began && !IsPointerOverUIObject())
                 {
-                    _miningTarget.GetComponent<Outline>().enabled = false;
-                }
-
-                Outline outline = hitInfo.collider.GetComponent<Outline>();
-                if (outline != null)
-                {
-                    outline.enabled = true;
-                    _miningTarget = outline.gameObject.GetComponent<Mineable>();
+                    // Construct a ray from the current touch coordinates
+                    Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(i).position);
+                    CastSelectionRay(ray);
                 }
             }
+
+    }
+
+    private void CastSelectionRay(Ray ray)
+    {
+        RaycastHit hitInfo;
+        if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity, LayerMask.GetMask("Mineable")))
+        {            
+            if (_miningTarget != null)
+            {
+                _miningTarget.GetComponent<Outline>().enabled = false;
+            }
+
+            Outline outline = hitInfo.collider.GetComponent<Outline>();
+            if (outline != null)
+            {
+                outline.enabled = true;
+                _miningTarget = outline.gameObject.GetComponent<Mineable>();
+            }            
         }
     }
 
