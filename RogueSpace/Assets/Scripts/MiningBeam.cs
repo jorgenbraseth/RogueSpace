@@ -75,7 +75,7 @@ public class MiningBeam : MonoBehaviour {
             RaycastHit hitInfo;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity))
+            if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity, LayerMask.GetMask("Mineable")))
             {
                 if (_miningTarget != null)
                 {
@@ -88,10 +88,13 @@ public class MiningBeam : MonoBehaviour {
                     outline.enabled = true;
                     _miningTarget = outline.gameObject.GetComponent<Mineable>();
                 }
-                
-                
             }
         }
+    }
+
+    public void Select(GameObject toSelect)
+    {
+        Debug.Log(toSelect);
     }
 
     [SerializeField]
