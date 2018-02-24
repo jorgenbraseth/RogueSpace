@@ -14,25 +14,13 @@ public class AbilityButton : MonoBehaviour
 
     private bool _down;
     private bool _up;
-
-    private float _downTime;
-    private float _upTime;
-
-    private void Update()
+    
+    private void LateUpdate()
     {
-        if(_upTime < Time.time)
-        {
-            _up = false;
-        }
-
-        if (_downTime < Time.time)
-        {            
-            _down = false;
-        }
+        _down = false;
+        _up = false;
     }
-
-
-
+   
     public void Disable()
     {
         _disabledMask.SetActive(true);
@@ -44,14 +32,12 @@ public class AbilityButton : MonoBehaviour
     }
 
     public void PointerDown()
-    {        
-        _downTime = Time.time;
-        _down = true;
+    {
+        _down = true;        
     }
 
     public void PointerUp()
     {
-        _upTime = Time.time;
         _up = true;
     }
 
@@ -61,7 +47,7 @@ public class AbilityButton : MonoBehaviour
     }
 
     public bool Down()
-    {                
+    {        
         return _down || Input.GetKeyDown(_keyboardShortcut);
     }
    
