@@ -55,7 +55,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Brightness: 0.5
+    - _Brightness: 0.3
     - _BumpScale: 1
     - _CLAMPOUT: 0
     - _CamScroll: 50
@@ -66,17 +66,17 @@ Material:
     - _DstBlend: 0
     - _Formuparam: 420
     - _Glossiness: 0.5
-    - _Iterations: 25.9
+    - _Iterations: 25.1
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _Saturation: 84.1
+    - _Saturation: 26.4
     - _SrcBlend: 1
     - _StepSize: 238.41
     - _Tile: 1235
     - _UVSec: 0
-    - _Volsteps: 13.74
+    - _Volsteps: 11.94
     - _ZWrite: 1
     m_Colors:
     - _Center: {r: 0.1, g: 0.3, b: 0.5, a: 0}

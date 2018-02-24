@@ -39,8 +39,11 @@ public class PlayerControls : MonoBehaviour {
 
         transform.rotation = Quaternion.LookRotation(lookDirection);
 
-        ParticleSystem.MainModule mainModule = _engineFlame.main;        
-        if (Mathf.Abs(horizontal) + Mathf.Abs(vertical) > 0)
+        ParticleSystem.MainModule mainModule = _engineFlame.main;
+
+        bool isFacingTargetPos = Vector3.Cross(transform.forward, targetDirection).magnitude < 0.1;
+
+        if (isFacingTargetPos && Mathf.Abs(horizontal) + Mathf.Abs(vertical) > 0)
         {
             _body.AddForce(transform.forward * _enginePower * Time.deltaTime);
             mainModule.loop = true;
