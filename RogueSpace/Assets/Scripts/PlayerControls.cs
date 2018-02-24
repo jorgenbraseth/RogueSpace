@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class PlayerControls : MonoBehaviour {
 
@@ -31,8 +32,8 @@ public class PlayerControls : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        float horizontal = Input.GetAxis("Horizontal");                
-        float vertical = Input.GetAxis("Vertical");
+        float horizontal = CrossPlatformInputManager.GetAxis("Horizontal") + Input.GetAxis("Horizontal");                
+        float vertical = CrossPlatformInputManager.GetAxis("Vertical") + Input.GetAxis("Vertical");
         
         Vector3 targetDirection = new Vector3(horizontal, 0, vertical);
         Vector3 lookDirection = Vector3.RotateTowards(transform.forward, targetDirection, _turnPower * Time.deltaTime, 0.0f);
