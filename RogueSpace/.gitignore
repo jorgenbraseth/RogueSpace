@@ -3,3 +3,4 @@
 .vs
 *.csproj
 *.sln
+/Assets/Vendor

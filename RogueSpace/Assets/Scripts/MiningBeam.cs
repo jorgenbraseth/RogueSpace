@@ -111,7 +111,6 @@ public class MiningBeam : MonoBehaviour {
             miningTargetInRange = hitSomething && _miningTargetHitInfo.collider.GetComponent<Mineable>() == _miningTarget;
         }
 
-        
         if (miningTargetInRange && _button.Down()) {            
             StartMining();           
         } else if (_button.Up() && _isMining) {
