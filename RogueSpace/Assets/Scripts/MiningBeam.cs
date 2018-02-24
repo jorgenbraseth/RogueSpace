@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using cakeslice;
 
 public class MiningBeam : MonoBehaviour {
@@ -19,10 +20,7 @@ public class MiningBeam : MonoBehaviour {
 
     [SerializeField]
     private float _miningRate = 10f;
-    private float _nextMine = 0f;
-
-    [SerializeField]
-    private LayerMask _minableLayer;
+    private float _nextMine = 0f;    
 
     [SerializeField]
     private AbilityButton _button;
@@ -57,7 +55,8 @@ public class MiningBeam : MonoBehaviour {
         {
             Vector3 direction = _miningTarget.transform.position - transform.position;
             RaycastHit hitInfo;
-            bool hitSomething = Physics.Raycast(transform.position, direction, out hitInfo, _miningRange, _minableLayer);
+            
+            bool hitSomething = Physics.Raycast(transform.position, direction, out hitInfo, _miningRange, LayerMask.GetMask("Mineable"));
             if (hitSomething && hitInfo.collider.GetComponent<Mineable>() == _miningTarget)
             {
                 _button.Enable();
@@ -71,12 +70,12 @@ public class MiningBeam : MonoBehaviour {
 
     private void SelectMinable()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
         {
             RaycastHit hitInfo;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity, _minableLayer))
+            if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity))
             {
                 if (_miningTarget != null)
                 {
@@ -87,9 +86,10 @@ public class MiningBeam : MonoBehaviour {
                 if (outline != null)
                 {
                     outline.enabled = true;
+                    _miningTarget = outline.gameObject.GetComponent<Mineable>();
                 }
                 
-                _miningTarget = outline.gameObject.GetComponent<Mineable>();
+                
             }
         }
     }
@@ -107,7 +107,7 @@ public class MiningBeam : MonoBehaviour {
         if (hasMiningTarget)
         {
             Vector3 direction = _miningTarget.transform.position - transform.position;            
-            bool hitSomething = Physics.Raycast(transform.position, direction, out _miningTargetHitInfo, _miningRange, _minableLayer);
+            bool hitSomething = Physics.Raycast(transform.position, direction, out _miningTargetHitInfo, _miningRange, LayerMask.GetMask("Mineable"));
             miningTargetInRange = hitSomething && _miningTargetHitInfo.collider.GetComponent<Mineable>() == _miningTarget;
         }
 
@@ -128,12 +128,10 @@ public class MiningBeam : MonoBehaviour {
 
             if (Time.time > _nextMine)
             {
+                _nextMine = Time.time + _miningRate;
                 _miningTarget.Mine();
                 GameObject mined = Instantiate(_minedOrePrefab, _miningTargetHitInfo.point, Quaternion.identity);
                 mined.GetComponent<Rigidbody>().AddForce(direction * 10f);
-                _nextMine = Time.time + _miningRate;
-
-
             }
         }
 
@@ -152,6 +150,7 @@ public class MiningBeam : MonoBehaviour {
 
     private void StartMining()
     {
+        _nextMine = Time.time + _miningRate;
         Vector3 direction = _miningTargetHitInfo.point - transform.position;
         miningBeam = Instantiate(_miningBeamFx, _miningTargetHitInfo.point, Quaternion.LookRotation(-direction));
         miningBeam.GetComponent<ParticleSystem>().trigger.SetCollider(0, transform);

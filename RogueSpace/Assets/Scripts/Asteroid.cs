@@ -5,19 +5,19 @@ using UnityEngine;
 public class Asteroid : Mineable {
 
     [SerializeField]
-    private int _oreAmount = 10;
+    private int _oreAmount;
 
     [SerializeField]
     private GameObject _deathEffect;
 
     private void Awake()
     {        
-        _oreAmount = (int)transform.localScale.x-2;
+        _oreAmount = (int)transform.localScale.x/100-2;
     }
 
     private void Update()
     {
-        transform.localScale = Vector3.one * (_oreAmount+2);
+        transform.localScale = Vector3.one * (_oreAmount+2)*100;
     }
     
 

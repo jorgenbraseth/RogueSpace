@@ -35,7 +35,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1797433193090170}
   m_LocalRotation: {x: -0, y: -0, z: -0.000000011641532, w: 1}
-  m_LocalPosition: {x: 19.313267, y: -2.5192413, z: -4.6989174}
+  m_LocalPosition: {x: 3.875995, y: 0, z: 1.9611924}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -101,7 +101,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: 923238537
+  randomSeed: 814569641
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -253,7 +253,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 100
       minScalar: 0.2
       maxCurve:
         serializedVersion: 2
@@ -2667,8 +2667,7 @@ ParticleSystem:
     enabled: 0
     subEmitters:
     - serializedVersion: 2
-      emitter: {fileID: 198646624812032110, guid: 7a73d91f16b087d488147ed1a8ef8f4a,
-        type: 2}
+      emitter: {fileID: 0}
       type: 2
       properties: 2
   LightsModule:
@@ -3469,7 +3468,7 @@ ParticleSystemRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 2100000, guid: 76385e75b46010642b7dca47209259fe, type: 2}
+  - {fileID: 2100000, guid: b106ac2afde437f4ba7efef4d21afc36, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -3503,7 +3502,7 @@ ParticleSystemRenderer:
   m_Pivot: {x: 0, y: 0, z: 0}
   m_UseCustomVertexStreams: 0
   m_VertexStreams: 00010304
-  m_Mesh: {fileID: 4300000, guid: 72fd38d3d1566e74b8726177e8de153f, type: 3}
+  m_Mesh: {fileID: 4300006, guid: 38c445290885e384197c7c05e3d49f5f, type: 3}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
