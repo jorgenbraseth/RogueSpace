@@ -2,7 +2,7 @@
 This is where I will be documenting my process.
 
 ## 27.Feb 2018 - 20:45
-So about a year ago, I stated looking at [Unity](https://unity3d.com/). I started and aborted a couple of projects before I finally felt I had a flow going. 
+So about a year ago, I started looking at [Unity](https://unity3d.com/). I started and aborted a couple of projects before I finally felt I had a flow going. 
 I was making a "roguelike" sidescrolling 2.5D shooter for android iOS! This is not it.
 
 Last week, I bought a [Udemy course](https://www.udemy.com/the-ultimate-guide-to-game-development-with-unity) after getting an ad on facebook for it, and after going through the course,
