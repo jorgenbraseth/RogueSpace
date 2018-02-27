@@ -22,3 +22,11 @@ Last week, I bought a [Udemy course](https://www.udemy.com/the-ultimate-guide-to
  In short, I want people to go out and hunt for high quality resources, enabling them to craft items for themselves and to sell on an open auction house.
 
  At the time of writing, I have a half playable 2.5D view that lets you mine a few asteroid. It's a long way to go. I'll keep track of things on [Trello](https://trello.com/b/aSKnTj8r/roguespace).
+
+
+ ## 27.Feb 2018 - 21:39
+ Did some minor improvements tonight. 
+ Finally fixed a bug that had been bothering me by throwing out my self made raycasting click handling, and instead use the event system interfaces like I should have from the beginning. [This video](https://www.youtube.com/watch?v=EVZiv7DLU6E) explains it.
+ I also added a new scene - the "Home screen", and made it so you could launch the game scene from this. 
+
+ Next time, I think I will have a look at either adding a simple inventory system or taking a crack at making my first enemies! I'm really wondering how I can make an AI that can navigate around asteroids and other obstacles.
