@@ -1,7 +1,7 @@
 # Developer Journal
 This is where I will be documenting my process.
 
-## 27.Feb 2018
+## 27.Feb 2018 - 20:45
 So about a year ago, I stated looking at [Unity](https://unity3d.com/). I started and aborted a couple of projects before I finally felt I had a flow going. 
 I was making a "roguelike" sidescrolling 2.5D shooter for android iOS! This is not it.
 
