@@ -6,6 +6,7 @@ using cakeslice;
 
 public class MiningBeam : MonoBehaviour {
     
+    [SerializeField]
     private Mineable _miningTarget;
 
     [SerializeField]
@@ -34,13 +35,10 @@ public class MiningBeam : MonoBehaviour {
     private void Start()
     {
         audioPlayer = GetComponent<AudioSource>();
-    }
-
-
+    }   
 
     // Update is called once per frame
     void Update () {
-        SelectMinable();
         SetButtonState();
         Mine();        
     }
@@ -75,51 +73,23 @@ public class MiningBeam : MonoBehaviour {
         List<RaycastResult> results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
         return results.Count > 0;
-    }
-
-    private void SelectMinable()
-    {
-
-            if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
-            {            
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                CastSelectionRay(ray);
-            }
-
-            for (int i = 0; i < Input.touchCount; ++i)
-            {
-                if (Input.GetTouch(i).phase == TouchPhase.Began && !IsPointerOverUIObject())
-                {
-                    // Construct a ray from the current touch coordinates
-                    Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(i).position);
-                    CastSelectionRay(ray);
-                }
-            }
-
-    }
-
-    private void CastSelectionRay(Ray ray)
-    {
-        RaycastHit hitInfo;
-        if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity, LayerMask.GetMask("Mineable")))
-        {            
-            if (_miningTarget != null)
-            {
-                _miningTarget.GetComponent<Outline>().enabled = false;
-            }
-
-            Outline outline = hitInfo.collider.GetComponent<Outline>();
-            if (outline != null)
-            {
-                outline.enabled = true;
-                _miningTarget = outline.gameObject.GetComponent<Mineable>();
-            }            
-        }
-    }
+    }       
 
     public void Select(GameObject toSelect)
-    {
-        Debug.Log(toSelect);
+    {        
+        if (_miningTarget != null)
+        {
+            _miningTarget.GetComponent<Outline>().enabled = false;
+        }
+
+        Outline outline = toSelect.gameObject.GetComponent<Outline>();        
+        if (outline != null)
+        {
+            outline.enabled = true;
+        }
+        _miningTarget = toSelect.gameObject.GetComponent<Mineable>();
+
+        Debug.Log(_miningTarget);
     }
 
     [SerializeField]
