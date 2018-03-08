@@ -30,3 +30,13 @@ Last week, I bought a [Udemy course](https://www.udemy.com/the-ultimate-guide-to
  I also added a new scene - the "Home screen", and made it so you could launch the game scene from this. 
 
  Next time, I think I will have a look at either adding a simple inventory system or taking a crack at making my first enemies! I'm really wondering how I can make an AI that can navigate around asteroids and other obstacles.
+
+
+ ## 28.Feb 2018 - 20:40
+ Just spent about 1 hour googling for good solutions for pathfinding in a 2.5D game. Not sure how I will solve this...
+
+ ## 8.Mar 2018 - 20:27
+ I decided I would just stick a pin in making an actual AI for my first enemies and just make a very simple "always follow, always shoot" behaviour to just get something up and running. 
+ It actually turned out ok - I'm now able to place some really rudementary enemies on the map, which enables me to start looking at player damage, loot, and other stuff.
+
+ I found [CG Trader](https://www.cgtrader.com/) to be a really nice source for som free 3D models for my enemies. 
