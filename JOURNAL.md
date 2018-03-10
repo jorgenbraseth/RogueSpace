@@ -40,3 +40,11 @@ Last week, I bought a [Udemy course](https://www.udemy.com/the-ultimate-guide-to
  It actually turned out ok - I'm now able to place some really rudementary enemies on the map, which enables me to start looking at player damage, loot, and other stuff.
 
  I found [CG Trader](https://www.cgtrader.com/) to be a really nice source for som free 3D models for my enemies. 
+
+ ## 10.Mar 2018 - 14:10
+ I've spent the last couple of hours making my enemies better in a couple of ways:
+ 1. I created a texture for them. I had to teach myself how to do [UV-mapping in Blender](https://www.youtube.com/watch?v=f2-FfB9kRmE) for this - that was fun!
+ 2. I made the enemies follow and shoot, only if the player is in range. I did this by making a "view range"-widget to try to generalize this behaviour.
+ 3. Added an engine particle effect
+
+ I also started looking at how to end a level by making a wormhole that makes you go back to the main menu. Next step will be to have the level state update the gamestate so that any loot you get in a level is only transferred to inventory if you exit the level alive. Oh, and I need to implement player damage :)

@@ -11,6 +11,9 @@ public class ProjectileShot1 : MonoBehaviour {
     private float ttl = 2f;
 
     [SerializeField]
+    private int damage = 5;
+
+    [SerializeField]
     private GameObject deathEffect;
 
     private float spawnTime;
@@ -37,10 +40,10 @@ public class ProjectileShot1 : MonoBehaviour {
 
         if (other.tag == "Player")
         {
-            Debug.Log("ouch!");
+            Player player = other.GetComponent<Player>();
+            player.damage(damage);
         }
 
-        Debug.Log(other);
         Destroy(gameObject);
     }
 

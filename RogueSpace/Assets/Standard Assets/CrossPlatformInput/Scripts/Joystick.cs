@@ -73,22 +73,23 @@ namespace UnityStandardAssets.CrossPlatformInput
 
 		public void OnDrag(PointerEventData data)
 		{
-			Vector3 newPos = Vector3.zero;
+			Vector3 direction = Vector3.zero;
 
 			if (m_UseX)
 			{
 				int delta = (int)(data.position.x - m_StartPos.x);
-				delta = Mathf.Clamp(delta, - MovementRange, MovementRange);
-				newPos.x = delta;
+				//delta = Mathf.Clamp(delta, - MovementRange, MovementRange);
+				direction.x = delta;
 			}
 
 			if (m_UseY)
 			{
 				int delta = (int)(data.position.y - m_StartPos.y);
-				delta = Mathf.Clamp(delta, -MovementRange, MovementRange);
-				newPos.y = delta;
+				//delta = Mathf.Clamp(delta, -MovementRange, MovementRange);
+				direction.y = delta;
 			}
-			transform.position = new Vector3(m_StartPos.x + newPos.x, m_StartPos.y + newPos.y, m_StartPos.z + newPos.z);
+            direction = Vector3.ClampMagnitude(direction, MovementRange);
+			transform.position = new Vector3(m_StartPos.x + direction.x, m_StartPos.y + direction.y, m_StartPos.z + direction.z);
 			UpdateVirtualAxes(transform.position);
 		}
 

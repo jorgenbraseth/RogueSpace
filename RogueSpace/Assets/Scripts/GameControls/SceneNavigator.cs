@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneNavigator : MonoBehaviour {
-
-	public void Starmap()
+    
+    public void Starmap()
     {
         SceneManager.LoadScene("Game");
     }

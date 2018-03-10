@@ -39,13 +39,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1498857194733114}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 335.27277, y: 335.27277, z: 335.27277}
+  m_LocalRotation: {x: 0.47555292, y: 0.43546724, z: -0.5541589, w: 0.52642727}
+  m_LocalPosition: {x: 132.54715, y: -0.8023083, z: -51.422943}
+  m_LocalScale: {x: 3600, y: 3600, z: 3600}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 48.433002, y: 33.838, z: -140.362}
 --- !u!23 &23153124137595366
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -55,7 +55,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -113,7 +113,7 @@ MeshCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Convex: 1
-  m_CookingOptions: 3
+  m_CookingOptions: -1
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300002, guid: 38c445290885e384197c7c05e3d49f5f, type: 3}
 --- !u!114 &114122396214152138
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39af866eeb57c1e48b4e14ccd943ea4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _oreAmount: 10
+  _oreAmount: 34
   _deathEffect: {fileID: 1797433193090170, guid: c715bedf466d4a64cb3029fccc6cebe2,
     type: 2}
 --- !u!114 &114986089430340656

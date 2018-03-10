@@ -7,6 +7,11 @@ public class GameState : MonoBehaviour {
     [SerializeField]
     private int oreAmount;
 
+    private void Start()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
     public void AddOre(int amount)
     {
         oreAmount += amount;

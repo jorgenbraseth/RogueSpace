@@ -19,11 +19,11 @@ TagManager:
   - Pickups
   - MiningBeam
   - MinimapIcons
-  - Projectiles
+  - EnemyWeapon
   - Enemy
   - FX
   - EnemyViewRange
-  - 
+  - PlayerWeapon
   - 
   - 
   - 
