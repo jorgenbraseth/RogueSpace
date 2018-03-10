@@ -4,11 +4,22 @@ using UnityEngine;
 
 public class GameState : MonoBehaviour {
 
+    private static GameState INSTANCE;
+
     [SerializeField]
     private int oreAmount;
 
     private void Start()
     {
+        if(INSTANCE == null)
+        {
+            INSTANCE = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         DontDestroyOnLoad(gameObject);
     }
 

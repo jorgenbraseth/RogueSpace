@@ -13,4 +13,10 @@ public class LevelManager : MonoBehaviour {
         SceneManager.LoadScene("Home");
         Debug.Log("Level ended!");
     }
+
+    public void Died()
+    {
+        Debug.Log("YOU DIED!");
+        EndLevel();
+    }
 }
