@@ -48,3 +48,9 @@ Last week, I bought a [Udemy course](https://www.udemy.com/the-ultimate-guide-to
  3. Added an engine particle effect
 
  I also started looking at how to end a level by making a wormhole that makes you go back to the main menu. Next step will be to have the level state update the gamestate so that any loot you get in a level is only transferred to inventory if you exit the level alive. Oh, and I need to implement player damage :)
+
+
+ ## 10.Mar 2018 - 23:50
+ OK! A pretty productive evening - I got guns up for both enemies and player. Made the wormhole exit and made the level end if player receive lethal damage.
+ I made the player gun by adding a "Gun" gameobject and putting all the scripts for the gun as components for that game object. I really like how this will enable me to switch off and switch between guns really easliy. 
+ I`m finding this way of modularizing the player and/or other prefabs to be really useful - ie. rather than having big switches of code in a single "player" class, have a master class for the player that switches on/off other game objects that each have their own code.
