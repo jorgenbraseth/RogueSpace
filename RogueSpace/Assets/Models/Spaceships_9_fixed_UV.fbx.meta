@@ -1,21 +1,29 @@
 fileFormatVersion: 2
-guid: 54dcfe62103d0c7468bc162990134da6
-timeCreated: 1520533744
+guid: f63535ec0155e1549862cbce0b43d51b
+timeCreated: 1520682606
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2100000: Material.001
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Cube
+    100000: Camera
+    100002: Lamp
+    100004: Spaceship
+    100006: //RootNode
+    400000: Camera
+    400002: Lamp
+    400004: Spaceship
+    400006: //RootNode
+    2000000: Camera
+    2100000: Material.002
+    2300000: Spaceship
+    3300000: Spaceship
+    4300000: Spaceship
+    10800000: Lamp
   externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
-    materialSearch: 0
+    materialSearch: 1
     materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
