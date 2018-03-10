@@ -19,6 +19,8 @@ public class ProjectileShot1 : MonoBehaviour {
 	void Start () {
         spawnTime = Time.time;
         GetComponent<Rigidbody>().AddForce(transform.forward * initialForce);
+
+        Destroy(gameObject, 1);
 	}
 
     private void FixedUpdate()
@@ -38,6 +40,7 @@ public class ProjectileShot1 : MonoBehaviour {
             Debug.Log("ouch!");
         }
 
+        Debug.Log(other);
         Destroy(gameObject);
     }
 

@@ -11,8 +11,7 @@ public class Ore : MonoBehaviour {
         _gameState = GameObject.Find("GameState").GetComponent<GameState>();
     }
 
-
-    private void OnTriggerStay(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.tag == "Player")
         {
@@ -20,6 +19,7 @@ public class Ore : MonoBehaviour {
             Destroy(gameObject);
         }
     }
+    
 
 
 }

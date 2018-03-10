@@ -4,30 +4,44 @@ using UnityEngine;
 
 public class EnemyFollow : MonoBehaviour {
 
+    [SerializeField]
     private GameObject player;
 
     [SerializeField]
     private float _speed = 5f;
 
+    private EnemyShootConstantly shotBehaviour;
+
 	// Use this for initialization
 	void Start () {
-        player = GameObject.FindGameObjectWithTag("Player");
+        shotBehaviour = GetComponent<EnemyShootConstantly>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
         MoveTowardsPlayer();
-        Shoot();
 	}
 
     void MoveTowardsPlayer()
     {
-        transform.LookAt(player.transform);
-        GetComponent<Rigidbody>().AddForce(transform.forward * _speed);
+        if(player != null)
+        {
+            transform.LookAt(player.transform);
+            GetComponent<Rigidbody>().AddForce(transform.forward * _speed);
+        }
     }
 
-    void Shoot()
+    public void TargetSpotted(GameObject spotted)
     {
-
+        shotBehaviour.enabled = true;
+        player = spotted;
     }
+
+    public void TargetOutOfSight(GameObject outOfSight)
+    {
+        shotBehaviour.enabled = false;
+        player = null;
+    }
+
+
 }
