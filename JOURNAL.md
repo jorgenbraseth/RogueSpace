@@ -54,3 +54,21 @@ Last week, I bought a [Udemy course](https://www.udemy.com/the-ultimate-guide-to
  OK! A pretty productive evening - I got guns up for both enemies and player. Made the wormhole exit and made the level end if player receive lethal damage.
  I made the player gun by adding a "Gun" gameobject and putting all the scripts for the gun as components for that game object. I really like how this will enable me to switch off and switch between guns really easliy. 
  I`m finding this way of modularizing the player and/or other prefabs to be really useful - ie. rather than having big switches of code in a single "player" class, have a master class for the player that switches on/off other game objects that each have their own code.
+
+ ## 11.Mar 2018 - 22:56
+ Finally! I managed to fix the minimap that has been bugged for quite a while! I have been using a render texture + raw image to make a UI-element with the minimap, but for some reason it didn|t work on my phone.
+ I first fixed it by rendering on a 3D object (quad) anchored to my main cam, but then figured out that you could do this even easier by just setting the viewport rect for the camera. Then, about 2 minutes later, I think I found out [why it was failing originally](https://answers.unity.com/questions/1234144/rawimage-with-rendertexture-texture-not-working-on.html). I
+ I might go back to my original approach later, now that I know how to fix it, but for now, I'm sticking with a simple camera with a custom viewport.
+
+ I now have:
+ - Movement controls
+ - Weapon controls
+ - Mining of asteroids
+ - Enemies with a VERY simple AI
+ - Player and enemy deaths
+ - A Main Menu
+
+Top priorities for the next features are:
+- An inventory system
+- Loot drop from enemies
+- Toolbar for weapon switching in game

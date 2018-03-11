@@ -22,16 +22,13 @@ public class PlayerShot1 : MonoBehaviour {
 	void Start () {
         spawnTime = Time.time;
         GetComponent<Rigidbody>().AddForce(transform.forward * initialForce);
-
-        Destroy(gameObject, 1);
 	}
 
     private void FixedUpdate()
     {
         if (Time.time > spawnTime + ttl)
-        {
-            Instantiate(deathEffect, transform.position, transform.rotation);
-            Destroy(gameObject);
+        {            
+            Die();
         }
     }
 
@@ -42,12 +39,15 @@ public class PlayerShot1 : MonoBehaviour {
         {            
             enemy.Damage(damage);
         }
-        GameObject death = Instantiate(deathEffect, transform.position, Quaternion.LookRotation(-1 * transform.eulerAngles));
-        Destroy(death, 1);
+        Die();
+    }
 
+    private void Die()
+    {
+        Instantiate(deathEffect, transform.position, Quaternion.LookRotation(-1 * transform.eulerAngles));
         Destroy(gameObject);
     }
 
-    
+
 
 }

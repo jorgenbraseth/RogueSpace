@@ -27,7 +27,7 @@ public class PlayerControls : MonoBehaviour {
 	void Start () {
         _body = GetComponent<Rigidbody>();
         _engineFlame = _mainEngine.GetComponent<ParticleSystem>();
-
+        _engineFlame.Play();
     }
 	
 	// Update is called once per frame
@@ -38,26 +38,16 @@ public class PlayerControls : MonoBehaviour {
         Vector3 targetDirection = new Vector3(horizontal, 0, vertical);
         Vector3 lookDirection = Vector3.RotateTowards(transform.forward, targetDirection, _turnPower * Time.deltaTime, 0.0f);
 
-        transform.rotation = Quaternion.LookRotation(lookDirection);
+        _engineFlame.startSpeed = 5f * targetDirection.magnitude;
 
-        ParticleSystem.MainModule mainModule = _engineFlame.main;
+        transform.rotation = Quaternion.LookRotation(lookDirection);
 
         bool isFacingTargetPos = Vector3.Cross(transform.forward, targetDirection).magnitude < 0.1;
 
         if (isFacingTargetPos && Mathf.Abs(horizontal) + Mathf.Abs(vertical) > 0)
-        {
-            _body.AddForce(transform.forward * _enginePower * Time.deltaTime);
-            mainModule.loop = true;
-
-            if (!_engineFlame.isPlaying)
-            {                
-                
-                _engineFlame.Play();
-            }
+        {           
+            _body.AddForce(transform.forward * _enginePower * Time.deltaTime * targetDirection.magnitude);
             
-        } else {
-            mainModule.loop = false;
-        }
-
+        } 
     }
 }
