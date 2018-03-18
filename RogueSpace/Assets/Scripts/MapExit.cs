@@ -19,7 +19,7 @@ public class MapExit : MonoBehaviour {
     {
         if (exiting && exitAt < Time.time)
         {
-            levelManager.EndLevel();
+            levelManager.LevelComplete();
         }
 
         if (exiting)

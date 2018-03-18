@@ -7,7 +7,7 @@ public class GameState : MonoBehaviour {
     private static GameState INSTANCE;
 
     [SerializeField]
-    private int oreAmount;
+    private int oreAmount = 0;
 
     private void Start()
     {

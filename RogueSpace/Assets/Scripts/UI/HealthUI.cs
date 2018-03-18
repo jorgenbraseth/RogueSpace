@@ -8,12 +8,10 @@ public class HealthUI : MonoBehaviour {
     [SerializeField]
     public Player player;
 
-    private GameState _game;
     private Text _text;
 
 	// Use this for initialization
 	void Start () {
-        _game = GameObject.Find("GameState").GetComponent<GameState>();
         _text = GetComponent<Text>();
 	}
 	

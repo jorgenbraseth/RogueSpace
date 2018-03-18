@@ -10,9 +10,13 @@ public class SceneNavigator : MonoBehaviour {
         SceneManager.LoadScene("Game");
     }
 
-    public void Storehouse()
+    public void Inventory()
     {
-        Debug.Log("Storehouse!");
-        //SceneManager.LoadScene("StoreHouse");
+        SceneManager.LoadScene("Inventory");
+    }
+
+    public void Home()
+    {
+        SceneManager.LoadScene("Home");
     }
 }

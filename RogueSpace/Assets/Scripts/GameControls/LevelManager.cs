@@ -8,10 +8,24 @@ public class LevelManager : MonoBehaviour {
     [SerializeField]
     private Player player;
 
-    public void EndLevel()
+    GameState gameState;
+
+    private void Awake()
+    {
+        gameState = GameObject.Find("GameState").GetComponent<GameState>();
+    }
+
+
+    private void EndLevel()
     {
         SceneManager.LoadScene("Home");
         Debug.Log("Level ended!");
+    }
+
+    public void LevelComplete()
+    {
+        gameState.AddOre(player.ore);
+        EndLevel();
     }
 
     public void Died()

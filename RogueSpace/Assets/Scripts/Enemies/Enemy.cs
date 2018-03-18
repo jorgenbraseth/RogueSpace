@@ -7,6 +7,9 @@ public class Enemy : MonoBehaviour {
     [SerializeField]
     private int maxHealth;
 
+    [SerializeField]
+    private GameObject deathEffect;
+
     public int health;
 
     private void Start()
@@ -30,6 +33,7 @@ public class Enemy : MonoBehaviour {
 
     private void Die()
     {
+        Destroy(Instantiate(deathEffect, transform.position, transform.rotation),3);        
         Destroy(gameObject);
     }
 }

@@ -12,12 +12,13 @@ public class Player : MonoBehaviour {
     private LevelManager level;
 
     public int health;
-   // public int health { get; }
+
+    public int ore;
 
     // Use this for initialization
-    void Start () {        
-        health = maxHealth;
-		
+    void Start () {
+        ore = 0;
+        health = maxHealth;		
 	}
 
     public void damage(int amount)
@@ -35,5 +36,11 @@ public class Player : MonoBehaviour {
         level.Died();
     }
 	
+
+    public bool AddOre(int amount)
+    {
+        ore += amount;
+        return true;
+    }
 	
 }
