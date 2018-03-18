@@ -72,3 +72,13 @@ Top priorities for the next features are:
 - An inventory system
 - Loot drop from enemies
 - Toolbar for weapon switching in game
+
+## 18.Mar 2018 - 22:25
+I added a bunch of stuff today! I made an inventory system, and made it so you only keep loot if you survive the level. I also did a bunch of work on resources:
+- Added several types of resources (not just "ore")
+- Rewrote mining to be just "damage-to-asteroid"-based, which simplifies things a whole lot.
+
+Enemies now also drop loot, drawn from a level specific loot table.
+I also changed the looks of the joysticks - they look a lot better now.
+
+Finally, I added an icon to the game, so it won't just show a unity logo any more.
