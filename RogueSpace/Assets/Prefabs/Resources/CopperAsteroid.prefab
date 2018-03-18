@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 114122396214152138}
   - component: {fileID: 114744778796469438}
   m_Layer: 9
-  m_Name: Asteroid
+  m_Name: CopperAsteroid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39,13 +39,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1498857194733114}
-  m_LocalRotation: {x: 0.47555292, y: 0.43546724, z: -0.5541589, w: 0.52642727}
-  m_LocalPosition: {x: 132.54715, y: -0.8023083, z: -51.422943}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3600, y: 3600, z: 3600}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 48.433002, y: 33.838, z: -140.362}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23153124137595366
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -60,7 +60,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: b106ac2afde437f4ba7efef4d21afc36, type: 2}
+  - {fileID: 2100000, guid: faf502faf7e5c414d89caa4b6b589720, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -143,6 +143,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _oreAmount: 34
+  _damageToBreak: 50
+  minedOre: {fileID: 1604949223551402, guid: b7c74a2977052304382f058516ea868c, type: 2}
   _deathEffect: {fileID: 1797433193090170, guid: c715bedf466d4a64cb3029fccc6cebe2,
     type: 2}
 --- !u!114 &114986089430340656

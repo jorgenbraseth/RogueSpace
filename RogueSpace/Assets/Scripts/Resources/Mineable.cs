@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public abstract class Mineable : MonoBehaviour, IPointerClickHandler
 {
-    public abstract int Mine();
+    public abstract GameObject Mine();
 
     public void OnPointerClick(PointerEventData eventData)
     {

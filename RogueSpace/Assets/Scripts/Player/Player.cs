@@ -35,11 +35,15 @@ public class Player : MonoBehaviour {
     {
         level.Died();
     }
-	
 
-    public bool AddOre(int amount)
+    public Dictionary<ResourceType, int> lootedResources = new Dictionary<ResourceType, int>();
+    public bool AddResource(ResourceType type, int amount)
     {
-        ore += amount;
+        if (!lootedResources.ContainsKey(type))
+        {
+            lootedResources[type] = 0;
+        }
+        lootedResources[type] += amount;
         return true;
     }
 	

@@ -34,10 +34,10 @@ public class PlayerShot1 : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {        
-        Enemy enemy = other.GetComponent<Enemy>();
+        IDamagable enemy = other.GetComponent<IDamagable>();
         if (enemy != null)
         {            
-            enemy.Damage(damage);
+            enemy.Damage(damage, transform.position, transform.forward);
         }
         Die();
     }

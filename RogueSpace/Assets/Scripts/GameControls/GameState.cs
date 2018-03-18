@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class GameState : MonoBehaviour {
 
-    private static GameState INSTANCE;
+    private static GameState INSTANCE;    
 
-    [SerializeField]
-    private int oreAmount = 0;
+    public Dictionary<ResourceType, int> resources = new Dictionary<ResourceType, int>();
 
-    private void Start()
+    private void Awake()
     {
-        if(INSTANCE == null)
+        if (INSTANCE == null)
         {
             INSTANCE = this;
         }
@@ -19,18 +18,17 @@ public class GameState : MonoBehaviour {
         {
             Destroy(gameObject);
         }
+        DontDestroyOnLoad(gameObject);       
+    }    
 
-        DontDestroyOnLoad(gameObject);
-    }
-
-    public void AddOre(int amount)
+    public void AddResource(ResourceType type, int amount)
     {
-        oreAmount += amount;
+        if (!resources.ContainsKey(type))
+        {
+            resources[type] = 0;
+        }
+        resources[type] += amount;
     }
-
-    public int OreAmount()
-    {
-        return oreAmount;
-    }
+    
 	
 }

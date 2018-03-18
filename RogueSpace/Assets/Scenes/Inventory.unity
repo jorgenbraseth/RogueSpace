@@ -222,6 +222,7 @@ GameObject:
   - component: {fileID: 182675252}
   - component: {fileID: 182675254}
   - component: {fileID: 182675253}
+  - component: {fileID: 182675255}
   m_Layer: 5
   m_Name: Inventory_CopperOre
   m_TagString: Untagged
@@ -241,7 +242,7 @@ RectTransform:
   m_Children:
   - {fileID: 1350360170}
   - {fileID: 1706629446}
-  m_Father: {fileID: 1500364893}
+  m_Father: {fileID: 1650172223}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -282,6 +283,26 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 182675251}
+--- !u!114 &182675255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 182675251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b484abe4ecaf44188aca1245749383, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedColor: {r: 0, g: 0, b: 0, a: 0}
+  unselectedColor: {r: 0, g: 0, b: 0, a: 0}
+  title: Copper Ore
+  description: Slightly rarer than Iron, this metal has a higher conductivity, but
+    isn't as tough. Really useful in making electronics.
+  properties: 
+  inventoryManager: {fileID: 1650172225}
+  amountText: {fileID: 1706629448}
+  resourceType: 2
 --- !u!1 &300085399
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,8 +316,9 @@ GameObject:
   - component: {fileID: 300085402}
   - component: {fileID: 300085401}
   - component: {fileID: 300085404}
+  - component: {fileID: 300085406}
   m_Layer: 5
-  m_Name: Item description
+  m_Name: ItemInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -336,7 +358,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -414,6 +436,20 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &300085406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 300085399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cdc88db018517d4c9ebd5fe65c6b356, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: {fileID: 1446274494}
+  description: {fileID: 2120321863}
+  properties: {fileID: 833131345}
 --- !u!1 &342474066
 GameObject:
   m_ObjectHideFlags: 0
@@ -708,6 +744,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114629325262068618, guid: 069a842c326cbb54a95ee6469aa619dd,
+        type: 2}
+      propertyPath: oreAmount
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 069a842c326cbb54a95ee6469aa619dd, type: 2}
   m_IsPrefabParent: 0
@@ -721,6 +762,7 @@ GameObject:
   - component: {fileID: 720754563}
   - component: {fileID: 720754565}
   - component: {fileID: 720754564}
+  - component: {fileID: 720754566}
   m_Layer: 5
   m_Name: Inventory_CopperIngot
   m_TagString: Untagged
@@ -740,7 +782,7 @@ RectTransform:
   m_Children:
   - {fileID: 657583953}
   - {fileID: 1528509035}
-  m_Father: {fileID: 1500364893}
+  m_Father: {fileID: 1650172223}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -781,6 +823,25 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 720754562}
+--- !u!114 &720754566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 720754562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b484abe4ecaf44188aca1245749383, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedColor: {r: 0, g: 0, b: 0, a: 0}
+  unselectedColor: {r: 0, g: 0, b: 0, a: 0}
+  title: Copper Ingot
+  description: Smelted copper ore.
+  properties: 
+  inventoryManager: {fileID: 1650172225}
+  amountText: {fileID: 1528509037}
+  resourceType: 3
 --- !u!1 &747253770
 GameObject:
   m_ObjectHideFlags: 0
@@ -789,9 +850,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 747253771}
+  - component: {fileID: 747253774}
   - component: {fileID: 747253772}
   - component: {fileID: 747253775}
-  - component: {fileID: 747253774}
   - component: {fileID: 747253773}
   m_Layer: 5
   m_Name: List
@@ -810,7 +871,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1500364893}
+  - {fileID: 1650172223}
   m_Father: {fileID: 1002477618}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -830,7 +891,7 @@ MonoBehaviour:
   m_Script: {fileID: 1367256648, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Content: {fileID: 1500364893}
+  m_Content: {fileID: 1650172223}
   m_Horizontal: 0
   m_Vertical: 1
   m_MovementType: 1
@@ -863,7 +924,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -958,7 +1019,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -977,45 +1038,13 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Hardness: <color="green">75</color>
-
-    Toughness: <color="red">15</color>
-
-    Conductivity: <color="orange">25</color>'
+  m_Text: 
 --- !u!222 &833131346
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 833131342}
---- !u!1 &869171116
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 869171117}
-  m_Layer: 0
-  m_Name: SkyboxRotator
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &869171117
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 869171116}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1133.6399, y: 518.2426, z: -12.507712}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &880870759
 GameObject:
   m_ObjectHideFlags: 0
@@ -1026,6 +1055,7 @@ GameObject:
   - component: {fileID: 880870760}
   - component: {fileID: 880870762}
   - component: {fileID: 880870761}
+  - component: {fileID: 880870763}
   m_Layer: 5
   m_Name: Inventory_ExoticIngot
   m_TagString: Untagged
@@ -1045,7 +1075,7 @@ RectTransform:
   m_Children:
   - {fileID: 916942290}
   - {fileID: 2056313034}
-  m_Father: {fileID: 1500364893}
+  m_Father: {fileID: 1650172223}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1086,6 +1116,25 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 880870759}
+--- !u!114 &880870763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 880870759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b484abe4ecaf44188aca1245749383, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedColor: {r: 0, g: 0, b: 0, a: 0}
+  unselectedColor: {r: 0, g: 0, b: 0, a: 0}
+  title: Exotic Ingot
+  description: This ingot is <color=#aaff33>glowing!</color>
+  properties: 
+  inventoryManager: {fileID: 1650172225}
+  amountText: {fileID: 2056313036}
+  resourceType: 5
 --- !u!1 &916942289
 GameObject:
   m_ObjectHideFlags: 0
@@ -1181,7 +1230,7 @@ GameObject:
   - component: {fileID: 919431589}
   - component: {fileID: 919431588}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Back button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1198,7 +1247,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1066495434}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -1318,7 +1367,7 @@ RectTransform:
   - {fileID: 747253771}
   - {fileID: 300085400}
   m_Father: {fileID: 1066495434}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1335,6 +1384,7 @@ GameObject:
   - component: {fileID: 1007328225}
   - component: {fileID: 1007328227}
   - component: {fileID: 1007328226}
+  - component: {fileID: 1007328228}
   m_Layer: 5
   m_Name: Inventory_IronIngot
   m_TagString: Untagged
@@ -1354,7 +1404,7 @@ RectTransform:
   m_Children:
   - {fileID: 342474067}
   - {fileID: 383997319}
-  m_Father: {fileID: 1500364893}
+  m_Father: {fileID: 1650172223}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1395,6 +1445,25 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1007328224}
+--- !u!114 &1007328228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1007328224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b484abe4ecaf44188aca1245749383, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedColor: {r: 0, g: 0, b: 0, a: 0}
+  unselectedColor: {r: 0, g: 0, b: 0, a: 0}
+  title: Iron Ingot
+  description: Smelting Iron Ore makes this stuff.
+  properties: 
+  inventoryManager: {fileID: 1650172225}
+  amountText: {fileID: 383997321}
+  resourceType: 1
 --- !u!1 &1066495430
 GameObject:
   m_ObjectHideFlags: 0
@@ -1481,8 +1550,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1863261069}
-  - {fileID: 1002477618}
   - {fileID: 919431587}
+  - {fileID: 1002477618}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1501,6 +1570,7 @@ GameObject:
   - component: {fileID: 1149552452}
   - component: {fileID: 1149552454}
   - component: {fileID: 1149552453}
+  - component: {fileID: 1149552455}
   m_Layer: 5
   m_Name: Inventory_ExoticOre
   m_TagString: Untagged
@@ -1520,7 +1590,7 @@ RectTransform:
   m_Children:
   - {fileID: 2032434210}
   - {fileID: 2092513587}
-  m_Father: {fileID: 1500364893}
+  m_Father: {fileID: 1650172223}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1561,6 +1631,25 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1149552451}
+--- !u!114 &1149552455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1149552451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b484abe4ecaf44188aca1245749383, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedColor: {r: 0, g: 0, b: 0, a: 0}
+  unselectedColor: {r: 0, g: 0, b: 0, a: 0}
+  title: Exotic Ore
+  description: This rock is <color=#aaff33>glowing!</color>
+  properties: 
+  inventoryManager: {fileID: 1650172225}
+  amountText: {fileID: 2092513589}
+  resourceType: 4
 --- !u!1 &1172396176
 GameObject:
   m_ObjectHideFlags: 0
@@ -1790,7 +1879,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1809,7 +1898,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Iron Ore
+  m_Text: 
 --- !u!222 &1446274495
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1878,97 +1967,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1500364892
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1500364893}
-  - component: {fileID: 1500364899}
-  - component: {fileID: 1500364898}
-  - component: {fileID: 1500364895}
-  m_Layer: 5
-  m_Name: items
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1500364893
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1500364892}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 2112507182}
-  - {fileID: 1007328225}
-  - {fileID: 182675252}
-  - {fileID: 720754563}
-  - {fileID: 1149552452}
-  - {fileID: 880870760}
-  m_Father: {fileID: 747253771}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1500, y: 880}
-  m_Pivot: {x: 0.5, y: 1}
---- !u!222 &1500364895
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1500364892}
---- !u!114 &1500364898
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1500364892}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -2095666955, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 0
-  m_StartCorner: 0
-  m_StartAxis: 0
-  m_CellSize: {x: 250, y: 250}
-  m_Spacing: {x: 0, y: 0}
-  m_Constraint: 1
-  m_ConstraintCount: 6
---- !u!223 &1500364899
-Canvas:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1500364892}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 0
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_TargetDisplay: 0
 --- !u!1 &1501900131
 GameObject:
   m_ObjectHideFlags: 0
@@ -2098,6 +2096,81 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1528509034}
+--- !u!1 &1650172222
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1650172223}
+  - component: {fileID: 1650172224}
+  - component: {fileID: 1650172225}
+  m_Layer: 5
+  m_Name: items
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1650172223
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1650172222}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2112507182}
+  - {fileID: 1007328225}
+  - {fileID: 182675252}
+  - {fileID: 720754563}
+  - {fileID: 1149552452}
+  - {fileID: 880870760}
+  m_Father: {fileID: 747253771}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1650172224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1650172222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -2095666955, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 250, y: 250}
+  m_Spacing: {x: 0, y: 0}
+  m_Constraint: 1
+  m_ConstraintCount: 6
+--- !u!114 &1650172225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1650172222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5618f4fb605a036489d2a42c1dab70bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1706629445
 GameObject:
   m_ObjectHideFlags: 0
@@ -2250,7 +2323,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2285,8 +2358,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1827006816}
   - component: {fileID: 1827006819}
-  - component: {fileID: 1827006818}
-  - component: {fileID: 1827006817}
   - component: {fileID: 1827006820}
   - component: {fileID: 1827006821}
   m_Layer: 0
@@ -2309,20 +2380,6 @@ Transform:
   m_Father: {fileID: 169551486}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!81 &1827006817
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1827006815}
-  m_Enabled: 1
---- !u!124 &1827006818
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1827006815}
-  m_Enabled: 1
 --- !u!20 &1827006819
 Camera:
   m_ObjectHideFlags: 0
@@ -2339,8 +2396,8 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
+  near clip plane: 1
+  far clip plane: 1.01
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -2352,11 +2409,11 @@ Camera:
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
+  m_HDR: 0
+  m_AllowMSAA: 0
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
+  m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
 --- !u!114 &1827006820
@@ -2449,7 +2506,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2855,6 +2912,7 @@ GameObject:
   - component: {fileID: 2112507182}
   - component: {fileID: 2112507184}
   - component: {fileID: 2112507183}
+  - component: {fileID: 2112507186}
   m_Layer: 5
   m_Name: Inventory_IronOre
   m_TagString: Untagged
@@ -2874,7 +2932,7 @@ RectTransform:
   m_Children:
   - {fileID: 1172396177}
   - {fileID: 1757349876}
-  m_Father: {fileID: 1500364893}
+  m_Father: {fileID: 1650172223}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2894,7 +2952,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.44700003, g: 0.7560294, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2915,6 +2973,25 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2112507181}
+--- !u!114 &2112507186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2112507181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b484abe4ecaf44188aca1245749383, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedColor: {r: 0.44705883, g: 0.75686276, b: 1, a: 1}
+  unselectedColor: {r: 0, g: 0, b: 0, a: 1}
+  title: Iron Ore
+  description: This stuff is <b>EVERYWHERE!</b>
+  properties: 
+  inventoryManager: {fileID: 1650172225}
+  amountText: {fileID: 1757349878}
+  resourceType: 0
 --- !u!1 &2120321860
 GameObject:
   m_ObjectHideFlags: 0
@@ -2978,7 +3055,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2997,7 +3074,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: The most abundant ore in the galaxy. Used to make all kinds of stuff.
+  m_Text: 
 --- !u!222 &2120321864
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -4,18 +4,20 @@ using UnityEngine;
 
 public class Ore : MonoBehaviour {
 
-    private void OnCollisionEnter(Collision other)
+    [SerializeField]
+    private ResourceType type;
+
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
             Player p = other.gameObject.GetComponent<Player>();
-            if (p.AddOre(1)) {
+            if (p.AddResource(type, 1))
+            {
                 Destroy(gameObject);
             }
-            
+
         }
     }
-    
-
 
 }

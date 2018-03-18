@@ -127,8 +127,8 @@ public class MiningBeam : MonoBehaviour {
             if (Time.time > _nextMine)
             {
                 _nextMine = Time.time + _miningRate;
-                _miningTarget.Mine();
-                GameObject mined = Instantiate(_minedOrePrefab, _miningTargetHitInfo.point, Quaternion.identity);
+                GameObject minedPrefab = _miningTarget.Mine();
+                GameObject mined = Instantiate(minedPrefab, _miningTargetHitInfo.point, Quaternion.identity);
                 mined.GetComponent<Rigidbody>().AddForce(direction * 10f);
             }
         }

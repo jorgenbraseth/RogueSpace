@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SkyboxCamera : MonoBehaviour {	
 	
-    private float scrollSpeed = 10;
 	// Update is called once per frame
 	void Update () {
 

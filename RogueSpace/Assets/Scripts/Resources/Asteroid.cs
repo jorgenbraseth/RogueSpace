@@ -2,10 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Asteroid : Mineable {
+public class Asteroid : MonoBehaviour, IDamagable {
 
     [SerializeField]
     private int _oreAmount;
+
+    [SerializeField]
+    private int _damageToBreak;
+
+    private int damageTaken = 0;
+
+    [SerializeField]
+    private GameObject minedOre;
 
     [SerializeField]
     private GameObject _deathEffect;
@@ -20,20 +28,6 @@ public class Asteroid : Mineable {
         transform.localScale = Vector3.one * (_oreAmount+2)*100;
     }
     
-
-    override public int Mine()
-    {
-        if(_oreAmount > 0)
-        {
-            _oreAmount--;
-            return 1;
-        }
-        else
-        {
-            return 0;
-        }
-    }
-
     private void LateUpdate()
     {
         if (_oreAmount <= 0)
@@ -49,5 +43,15 @@ public class Asteroid : Mineable {
         Destroy(gameObject);
     }
 
-    
+    public void Damage(int amount, Vector3 position, Vector3 direction)
+    {
+        damageTaken += amount;
+        if (damageTaken > _damageToBreak) {
+            GameObject mined = Instantiate(minedOre, position, Quaternion.identity);
+            mined.GetComponent<Rigidbody>().AddForce(-500*direction);
+            _oreAmount--;
+            damageTaken = 0;
+        }
+        
+    }
 }

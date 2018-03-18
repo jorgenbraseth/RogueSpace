@@ -8,6 +8,9 @@ public class LevelManager : MonoBehaviour {
     [SerializeField]
     private Player player;
 
+    [SerializeField]
+    private LootChance[] lootTable;
+
     GameState gameState;
 
     private void Awake()
@@ -15,6 +18,25 @@ public class LevelManager : MonoBehaviour {
         gameState = GameObject.Find("GameState").GetComponent<GameState>();
     }
 
+    public GameObject RandomLoot()
+    {
+        float sumOfChances = 0f;
+        foreach(LootChance loot in lootTable) {
+            sumOfChances += loot.chance;               
+        }
+
+        float picked = Random.Range(0f, sumOfChances);
+        foreach (LootChance loot in lootTable)
+        {
+            picked -= loot.chance;
+            if (picked <= 0)
+            {
+                return loot.loot;
+            }
+        }
+
+        return null;
+    }
 
     private void EndLevel()
     {
@@ -24,7 +46,9 @@ public class LevelManager : MonoBehaviour {
 
     public void LevelComplete()
     {
-        gameState.AddOre(player.ore);
+        foreach(KeyValuePair<ResourceType,int> loot in player.lootedResources) {
+            gameState.AddResource(loot.Key, loot.Value);
+        }
         EndLevel();
     }
 

@@ -38,7 +38,8 @@ public class PlayerControls : MonoBehaviour {
         Vector3 targetDirection = new Vector3(horizontal, 0, vertical);
         Vector3 lookDirection = Vector3.RotateTowards(transform.forward, targetDirection, _turnPower * Time.deltaTime, 0.0f);
 
-        _engineFlame.startSpeed = 5f * targetDirection.magnitude;
+        ParticleSystem.MainModule main = _engineFlame.main;
+        main.startSpeed = 5f * targetDirection.magnitude;
 
         transform.rotation = Quaternion.LookRotation(lookDirection);
 
