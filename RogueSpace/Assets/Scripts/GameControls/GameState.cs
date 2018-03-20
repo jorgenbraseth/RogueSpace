@@ -18,7 +18,10 @@ public class GameState : MonoBehaviour {
         {
             Destroy(gameObject);
         }
-        DontDestroyOnLoad(gameObject);       
+        DontDestroyOnLoad(gameObject);
+
+//        AddResource(ResourceType.EXOTIC_INGOT, 42);
+//        AddResource(ResourceType.IRON_ORE, 40);
     }    
 
     public void AddResource(ResourceType type, int amount)

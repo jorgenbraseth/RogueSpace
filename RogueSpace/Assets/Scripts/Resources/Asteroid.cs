@@ -40,7 +40,7 @@ public class Asteroid : MonoBehaviour, IDamagable {
     {
         GameObject deathFx = Instantiate(_deathEffect, transform.position, Quaternion.identity);
         Destroy(deathFx, 4f);
-        Destroy(gameObject);
+        Destroy(transform.parent.gameObject);
     }
 
     public void Damage(int amount, Vector3 position, Vector3 direction)

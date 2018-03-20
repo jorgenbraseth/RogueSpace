@@ -8,10 +8,14 @@ public class Enemy : MonoBehaviour, IDamagable {
     private int maxHealth;
 
     [SerializeField]
+    private int lootAmount;
+
+    [SerializeField]
     private GameObject deathEffect;
 
     private LevelManager levelManager;
 
+    [HideInInspector]
     public int health;
 
     private void Start()
@@ -36,7 +40,11 @@ public class Enemy : MonoBehaviour, IDamagable {
 
     private void Die()
     {        
-        Instantiate(levelManager.RandomLoot(), transform.position, transform.rotation);
+        for(int i = 0; i < lootAmount; i++)
+        {
+            GameObject loot = Instantiate(levelManager.RandomLoot(), transform.position, transform.rotation);
+            loot.GetComponent<Rigidbody>().AddForce(Random.onUnitSphere * 200);
+        }        
         
         Destroy(Instantiate(deathEffect, transform.position, transform.rotation),3);        
         Destroy(gameObject);

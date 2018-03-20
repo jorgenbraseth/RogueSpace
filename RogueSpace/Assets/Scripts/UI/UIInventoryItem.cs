@@ -7,10 +7,10 @@ using UnityEngine.UI;
 public class UIInventoryItem: MonoBehaviour, IPointerClickHandler {
 
     [SerializeField]
-    private Color selectedColor;
+    private Color selectedColor = new Color(114,193,255);
 
     [SerializeField]
-    private Color unselectedColor;
+    private Color unselectedColor = Color.black;
 
 
     [SerializeField]

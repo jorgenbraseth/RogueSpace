@@ -11,7 +11,7 @@ public class EnemyShootConstantly : MonoBehaviour {
     private GameObject shot;
 
     [SerializeField]
-    private GameObject gun;
+    private GameObject[] guns;
 
     private float nextShotTime;
 
@@ -29,6 +29,9 @@ public class EnemyShootConstantly : MonoBehaviour {
     private void Shoot()
     {
         nextShotTime = Time.time + rateOfFire;
-        Instantiate(shot, gun.transform.position , gun.transform.rotation);
+        foreach (GameObject gun in guns) {
+            Instantiate(shot, gun.transform.position, gun.transform.rotation);
+        }
+        
     }
 }

@@ -15,12 +15,12 @@ public class InventoryManager : MonoBehaviour {
     private UIInventoryItem currentlySelected;
     public void SelectItem(UIInventoryItem selected)
     {
-        if(currentlySelected != null)
+        if(currentlySelected != null && currentlySelected != selected)
         {
             currentlySelected.Deselect();
         }
-
-        selected.Select();
+        currentlySelected = selected;
+        currentlySelected.Select();
     }
 	
 }

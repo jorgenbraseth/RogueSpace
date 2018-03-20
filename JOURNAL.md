@@ -82,3 +82,13 @@ Enemies now also drop loot, drawn from a level specific loot table.
 I also changed the looks of the joysticks - they look a lot better now.
 
 Finally, I added an icon to the game, so it won't just show a unity logo any more.
+
+Next steps:
+- Ship upgrades
+- Take a look at the map playability and at the very least make the map have an objective. Some possible options:
+-- Kill all enemies
+-- Kill a specific enemy
+-- Loot a specific item
+-- Reach a certain destination
+
+Most of the objectives above should have some sort of visual objective pointer - looking forward to implementing that.
