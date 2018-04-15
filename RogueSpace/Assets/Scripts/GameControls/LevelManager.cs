@@ -9,13 +9,38 @@ public class LevelManager : MonoBehaviour {
     private Player player;
 
     [SerializeField]
+    private ModalWindow youWin;
+
+    [SerializeField]
+    private ModalWindow youLoose;
+
+    [SerializeField]
     private LootChance[] lootTable;
+
+    [SerializeField]
+    private GameObject exit;
+
+    [SerializeField]
+    private ObjectivePointers pointers;
+
 
     GameState gameState;
 
     private void Awake()
     {
+        Time.timeScale = 1;
         gameState = GameObject.Find("GameState").GetComponent<GameState>();
+
+        exit.SetActive(false);
+
+        InitPointers(); //TODO: add pointers through level manager     
+
+    }    
+
+    private void InitPointers()
+    {
+        pointers.AddExit(exit.GetComponent<MapExit>());
+
     }
 
     public GameObject RandomLoot()
@@ -40,8 +65,12 @@ public class LevelManager : MonoBehaviour {
 
     private void EndLevel()
     {
-        SceneManager.LoadScene("Home");
-        Debug.Log("Level ended!");
+        SceneManager.LoadScene("Home");        
+    }
+
+    public void ObjectiveComplete()
+    {
+        exit.SetActive(true);
     }
 
     public void LevelComplete()
@@ -49,12 +78,11 @@ public class LevelManager : MonoBehaviour {
         foreach(KeyValuePair<ResourceType,int> loot in player.lootedResources) {
             gameState.AddResource(loot.Key, loot.Value);
         }
-        EndLevel();
+        youWin.Open(EndLevel);
     }
 
     public void Died()
     {
-        Debug.Log("YOU DIED!");
-        EndLevel();
+        youLoose.Open(EndLevel);        
     }
 }

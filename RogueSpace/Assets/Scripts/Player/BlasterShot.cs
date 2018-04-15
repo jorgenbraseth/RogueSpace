@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerShot1 : MonoBehaviour {
+public class BlasterShot : IBlasterShot {
 
     [SerializeField]
     private float initialForce = 115f;
@@ -17,6 +17,11 @@ public class PlayerShot1 : MonoBehaviour {
     private GameObject deathEffect;
 
     private float spawnTime;
+
+    public override void Configure(int damage)
+    {
+        this.damage = damage;        
+    }
 
 	// Use this for initialization
 	void Start () {

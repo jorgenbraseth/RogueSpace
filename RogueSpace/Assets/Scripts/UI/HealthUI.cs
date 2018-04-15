@@ -17,6 +17,6 @@ public class HealthUI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        _text.text = "Health: " + player.health;
+        _text.text = ""+player.health;
 	}
 }

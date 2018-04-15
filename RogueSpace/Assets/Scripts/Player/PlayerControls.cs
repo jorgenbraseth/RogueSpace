@@ -22,9 +22,11 @@ public class PlayerControls : MonoBehaviour {
     private ParticleSystem _engineFlame;
 
     Rigidbody _body;
+    Player _player;
 
 	// Use this for initialization
 	void Start () {
+        _player = GetComponent<Player>();
         _body = GetComponent<Rigidbody>();
         _engineFlame = _mainEngine.GetComponent<ParticleSystem>();
         _engineFlame.Play();
@@ -32,9 +34,28 @@ public class PlayerControls : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        float horizontal = CrossPlatformInputManager.GetAxis("Horizontal") + Input.GetAxis("Horizontal");                
+        Move();
+        Shoot();
+    }
+
+    private void Shoot()
+    {
+        float aimX = CrossPlatformInputManager.GetAxis("WeaponHorizontal");
+        float aimY = CrossPlatformInputManager.GetAxis("WeaponVertical");
+
+        Vector3 aim = new Vector3(aimX, 0, aimY);
+
+        if (aim.magnitude > 0.01)
+        {
+            _player.Shoot(aim);
+        }
+    }
+
+    private void Move()
+    {
+        float horizontal = CrossPlatformInputManager.GetAxis("Horizontal") + Input.GetAxis("Horizontal");
         float vertical = CrossPlatformInputManager.GetAxis("Vertical") + Input.GetAxis("Vertical");
-        
+
         Vector3 targetDirection = new Vector3(horizontal, 0, vertical);
         Vector3 lookDirection = Vector3.RotateTowards(transform.forward, targetDirection, _turnPower * Time.deltaTime, 0.0f);
 
@@ -46,9 +67,9 @@ public class PlayerControls : MonoBehaviour {
         bool isFacingTargetPos = Vector3.Cross(transform.forward, targetDirection).magnitude < 0.1;
 
         if (isFacingTargetPos && Mathf.Abs(horizontal) + Mathf.Abs(vertical) > 0)
-        {           
+        {
             _body.AddForce(transform.forward * _enginePower * Time.deltaTime * targetDirection.magnitude);
-            
-        } 
+
+        }
     }
 }

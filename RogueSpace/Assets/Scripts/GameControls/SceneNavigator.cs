@@ -19,4 +19,9 @@ public class SceneNavigator : MonoBehaviour {
     {
         SceneManager.LoadScene("Home");
     }
+
+    public void CustomizeShip()
+    {
+        SceneManager.LoadScene("ShipCustomization");
+    }
 }

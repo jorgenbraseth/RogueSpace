@@ -8,6 +8,13 @@ public class GameState : MonoBehaviour {
 
     public Dictionary<ResourceType, int> resources = new Dictionary<ResourceType, int>();
 
+    public List<GameObject> items = new List<GameObject>();
+
+    [SerializeField]
+    private GameObject _defaultGun;
+
+    public ShipConfig shipConfig = new ShipConfig();
+
     private void Awake()
     {
         if (INSTANCE == null)
@@ -20,8 +27,12 @@ public class GameState : MonoBehaviour {
         }
         DontDestroyOnLoad(gameObject);
 
-//        AddResource(ResourceType.EXOTIC_INGOT, 42);
-//        AddResource(ResourceType.IRON_ORE, 40);
+
+        items.Add(_defaultGun);
+        shipConfig.mainWeapon = _defaultGun;
+
+        
+
     }    
 
     public void AddResource(ResourceType type, int amount)
@@ -34,4 +45,9 @@ public class GameState : MonoBehaviour {
     }
     
 	
+}
+
+public class ShipConfig
+{
+    public GameObject mainWeapon;
 }

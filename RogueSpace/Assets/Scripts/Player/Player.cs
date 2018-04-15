@@ -5,20 +5,29 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
+    private GameState gameState;
+
     [SerializeField]
     private int maxHealth;
 
     [SerializeField]
     private LevelManager level;
 
+    [SerializeField]
+    private GameObject mainGunMountPoint;
+
     public int health;
 
     public int ore;
+    private IGun mainGun;
 
-    // Use this for initialization
     void Start () {
+        gameState = GameObject.Find("GameState").GetComponent<GameState>();
+
         ore = 0;
-        health = maxHealth;		
+        health = maxHealth;
+
+        ConfigureShip();
 	}
 
     public void damage(int amount)
@@ -47,4 +56,13 @@ public class Player : MonoBehaviour {
         return true;
     }
 	
+    private void ConfigureShip()
+    {
+        mainGun = Instantiate(gameState.shipConfig.mainWeapon, mainGunMountPoint.transform).GetComponent<IGun>();
+    }
+
+    public void Shoot(Vector3 aim)
+    {
+        mainGun.Shoot(aim);
+    }
 }
