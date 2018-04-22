@@ -55,3 +55,4 @@ MonoBehaviour:
     type: 2}
   fireRate: 0.05
   damage: 1
+  name: Blaster

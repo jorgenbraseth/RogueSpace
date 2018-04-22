@@ -11,6 +11,15 @@ public class UIInventoryItemResource : UIInventoryItem {
     [SerializeField]
     public ResourceType resourceType;
 
+    [SerializeField]
+    private string title;
+
+    [SerializeField]
+    private string description;
+
+    [SerializeField]
+    private string properties;
+
     void Start()
     {
         GameState state = GameObject.Find("GameState").GetComponent<GameState>();
@@ -29,5 +38,15 @@ public class UIInventoryItemResource : UIInventoryItem {
     {
         amountText.text = amount+"";
         gameObject.SetActive(amount != 0);
+    }
+
+    public override void UpdateInfo(InventoryItemDescription ii)
+    {
+        ii.SetItem(title, description, properties, null);
+    }
+
+    public override EquipPosition EquippablePosition()
+    {
+        return EquipPosition.NONE;
     }
 }

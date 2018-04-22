@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class GameState : MonoBehaviour {
@@ -31,6 +32,7 @@ public class GameState : MonoBehaviour {
         items.Add(_defaultGun);
         shipConfig.mainWeapon = _defaultGun;
 
+        AddResource(ResourceType.COPPER_INGOT, 5);
         
 
     }    
@@ -47,6 +49,7 @@ public class GameState : MonoBehaviour {
 	
 }
 
+[Serializable]
 public class ShipConfig
 {
     public GameObject mainWeapon;

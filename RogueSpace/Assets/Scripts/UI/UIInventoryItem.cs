@@ -4,23 +4,13 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UIInventoryItem: MonoBehaviour, IPointerClickHandler {
+public abstract class UIInventoryItem: MonoBehaviour, IPointerClickHandler {
 
     [SerializeField]
     private Color selectedColor = new Color(114,193,255);
 
     [SerializeField]
-    private Color unselectedColor = Color.black;
-
-
-    [SerializeField]
-    private string title;
-
-    [SerializeField]
-    private string description;
-
-    [SerializeField]
-    private string properties;
+    private Color unselectedColor = Color.black;    
 
     [SerializeField]
     private InventoryManager inventoryManager;
@@ -32,11 +22,13 @@ public class UIInventoryItem: MonoBehaviour, IPointerClickHandler {
         itemInfo = GameObject.Find("ItemInfo").GetComponent<InventoryItemDescription>();
     }
 
+    abstract public void UpdateInfo(InventoryItemDescription ii);
+    
 
     public void OnPointerClick(PointerEventData eventData)
     {
         inventoryManager.SelectItem(this);
-        itemInfo.SetItem(title, description, properties);
+        UpdateInfo(itemInfo);
     }
 
     public void Select()
@@ -48,5 +40,7 @@ public class UIInventoryItem: MonoBehaviour, IPointerClickHandler {
     {
         GetComponent<Image>().color = unselectedColor;
     }
+
+    public abstract EquipPosition EquippablePosition();
 }
 

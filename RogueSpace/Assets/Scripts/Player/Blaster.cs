@@ -14,6 +14,9 @@ public class Blaster : MonoBehaviour, IGun {
     [SerializeField]
     private int damage = 1;
 
+    [SerializeField]
+    private string name;
+
     private void Start()
     {
         projectile.Configure(this.damage);
@@ -28,5 +31,22 @@ public class Blaster : MonoBehaviour, IGun {
             Instantiate(projectile.gameObject, transform.position, Quaternion.LookRotation(aim));
             nextFire = Time.time + fireRate;
         }
+    }
+
+    public int GetDamage() { return damage; }
+
+    public string GetDescription()
+    {
+        return "Blasts stuff";
+    }
+
+    public string GetName()
+    {
+        return name;
+    }
+
+    public string GetProperties()
+    {
+        return damage + " damage";
     }
 }
