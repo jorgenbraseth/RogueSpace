@@ -152,12 +152,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedColor: {r: 0.44705883, g: 0.75686276, b: 1, a: 1}
   unselectedColor: {r: 0, g: 0, b: 0, a: 1}
+  icon: {fileID: 114271398418745986}
+  amountText: {fileID: 114203836931525000}
+  resourceType: 0
   title: Iron Ore
   description: This stuff is <b>EVERYWHERE!</b>
   properties: 
-  inventoryManager: {fileID: 0}
-  amountText: {fileID: 114203836931525000}
-  resourceType: 0
 --- !u!114 &114678495691864704
 MonoBehaviour:
   m_ObjectHideFlags: 1

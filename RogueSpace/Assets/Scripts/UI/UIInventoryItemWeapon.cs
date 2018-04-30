@@ -4,13 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class UIInventoryItemWeapon : UIInventoryItem {
-
-    public GameObject weapon;
-    private IGun gun;
+   
+    public Gun gun;
 
     void Start()
     {        
-       gun = weapon.GetComponent<IGun>();
     }
 
     override public void UpdateInfo(InventoryItemDescription ii)
@@ -22,5 +20,13 @@ public class UIInventoryItemWeapon : UIInventoryItem {
     {
         return EquipPosition.MAIN_GUN;
     }
+
+
+    public void SetItem(Gun weapon)
+    {
+        gun = weapon;
+        SetIcon(gun.icon);
+    }
+
 
 }

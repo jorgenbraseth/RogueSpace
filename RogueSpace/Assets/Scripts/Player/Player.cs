@@ -19,7 +19,7 @@ public class Player : MonoBehaviour {
     public int health;
 
     public int ore;
-    private IGun mainGun;
+    private Gun mainGun;
 
     void Start () {
         gameState = GameObject.Find("GameState").GetComponent<GameState>();
@@ -58,11 +58,19 @@ public class Player : MonoBehaviour {
 	
     private void ConfigureShip()
     {
-        mainGun = Instantiate(gameState.shipConfig.mainWeapon, mainGunMountPoint.transform).GetComponent<IGun>();
+        mainGun = Instantiate(gameState.shipConfig.mainWeapon, mainGunMountPoint.transform);
     }
 
     public void Shoot(Vector3 aim)
     {
         mainGun.Shoot(aim);
+    }
+
+    public List<InventoryItem> lootedItems = new List<InventoryItem>();
+    public bool AddLoot(InventoryItem loot)
+    {
+        Debug.Log(loot);
+        lootedItems.Add(loot);
+        return true;
     }
 }

@@ -42,7 +42,7 @@ public class InventoryItemDescription : MonoBehaviour {
     public void EquipSelected()
     {
         Debug.Log(title.text + "equipped in position " + EquipPosition.MAIN_GUN);
-        _gameState.shipConfig.mainWeapon = _selectedItem.weapon;
+        _gameState.shipConfig.mainWeapon = _selectedItem.gun;
     }
 
 }

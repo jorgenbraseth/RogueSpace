@@ -804,7 +804,7 @@ Prefab:
         type: 2}
       propertyPath: _defaultGun
       value: 
-      objectReference: {fileID: 1262717215138592, guid: 5b06f716e93fb394f864cc9fc54308a0,
+      objectReference: {fileID: 114946708873699848, guid: 5b06f716e93fb394f864cc9fc54308a0,
         type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 069a842c326cbb54a95ee6469aa619dd, type: 2}

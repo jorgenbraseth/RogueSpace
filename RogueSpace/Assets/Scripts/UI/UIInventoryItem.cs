@@ -10,9 +10,11 @@ public abstract class UIInventoryItem: MonoBehaviour, IPointerClickHandler {
     private Color selectedColor = new Color(114,193,255);
 
     [SerializeField]
-    private Color unselectedColor = Color.black;    
+    private Color unselectedColor = Color.black;
 
     [SerializeField]
+    private Image icon;
+
     private InventoryManager inventoryManager;
 
     private InventoryItemDescription itemInfo;
@@ -20,11 +22,17 @@ public abstract class UIInventoryItem: MonoBehaviour, IPointerClickHandler {
     private void Awake()
     {
         itemInfo = GameObject.Find("ItemInfo").GetComponent<InventoryItemDescription>();
+        inventoryManager = GameObject.Find("InventoryManager").GetComponent<InventoryManager>();
+
+    }
+
+    public void SetIcon(Sprite icon)
+    {
+        this.icon.sprite = icon;
     }
 
     abstract public void UpdateInfo(InventoryItemDescription ii);
     
-
     public void OnPointerClick(PointerEventData eventData)
     {
         inventoryManager.SelectItem(this);

@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 114806670230414658}
   - component: {fileID: 114031576486554610}
   m_Layer: 5
-  m_Name: Inventory_Item
+  m_Name: Inventory_Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60,10 +60,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedColor: {r: 114, g: 193, b: 255, a: 1}
   unselectedColor: {r: 0, g: 0, b: 0, a: 1}
-  title: Blaster
-  description: Basic kinetic weapon
-  properties: 5 damage (kinetic)
-  inventoryManager: {fileID: 0}
+  icon: {fileID: 114271398418745986}
+  weapon: {fileID: 1262717215138592, guid: 5b06f716e93fb394f864cc9fc54308a0, type: 2}
 --- !u!114 &114163511307111234
 MonoBehaviour:
   m_ObjectHideFlags: 1

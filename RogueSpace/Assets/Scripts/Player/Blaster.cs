@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
-public class Blaster : MonoBehaviour, IGun {   
+public class Blaster : Gun {   
 
     [SerializeField]
     private BlasterShot projectile;
@@ -24,7 +24,7 @@ public class Blaster : MonoBehaviour, IGun {
 
     private float nextFire;	
 
-    public void Shoot(Vector3 aim)
+    public override void Shoot(Vector3 aim)
     {
         if (Time.time > nextFire)
         {
@@ -33,19 +33,19 @@ public class Blaster : MonoBehaviour, IGun {
         }
     }
 
-    public int GetDamage() { return damage; }
+    public override int GetDamage() { return damage; }
 
-    public string GetDescription()
+    public override string GetDescription()
     {
         return "Blasts stuff";
     }
 
-    public string GetName()
+    public override string GetName()
     {
         return name;
     }
 
-    public string GetProperties()
+    public override string GetProperties()
     {
         return damage + " damage";
     }

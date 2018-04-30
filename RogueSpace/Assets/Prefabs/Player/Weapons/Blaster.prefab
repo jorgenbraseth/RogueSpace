@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 891fea86cd446e3479e845abe1831ff2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: b01dc389f30e0d64eb5ade7b6933fcd0, type: 3}
   projectile: {fileID: 114277221527508926, guid: fc9818252a17afb4e81b89e4aa9e3153,
     type: 2}
   fireRate: 0.05

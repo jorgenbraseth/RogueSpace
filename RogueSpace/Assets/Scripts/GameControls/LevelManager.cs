@@ -21,6 +21,9 @@ public class LevelManager : MonoBehaviour {
     private GameObject exit;
 
     [SerializeField]
+    private LootCrate lootCratePrefab;
+
+    [SerializeField]
     private ObjectivePointers pointers;
 
 
@@ -63,6 +66,12 @@ public class LevelManager : MonoBehaviour {
         return null;
     }
 
+    public void CratedLoot(InventoryItem loot, Vector3 position, Quaternion rotation)
+    {
+        lootCratePrefab.SetLoot(loot);
+        LootCrate crate = Instantiate(lootCratePrefab, position, rotation);        
+    }
+
     private void EndLevel()
     {
         SceneManager.LoadScene("Home");        
@@ -77,6 +86,11 @@ public class LevelManager : MonoBehaviour {
     {
         foreach(KeyValuePair<ResourceType,int> loot in player.lootedResources) {
             gameState.AddResource(loot.Key, loot.Value);
+        }
+
+        foreach(InventoryItem loot in player.lootedItems)
+        {
+            gameState.AddLoot(loot);           
         }
         youWin.Open(EndLevel);
     }

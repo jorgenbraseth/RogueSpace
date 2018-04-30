@@ -7,7 +7,7 @@ public class MapExit : MonoBehaviour {
     private LevelManager levelManager;
 
     private float exitAt;
-    private float exitTime = 3f;
+    private float exitTime = 1f;
     private bool exiting;
 
     private void Start()
@@ -20,12 +20,9 @@ public class MapExit : MonoBehaviour {
         if (exiting && exitAt < Time.time)
         {
             levelManager.LevelComplete();
+            exiting = false;
         }
 
-        if (exiting)
-        {
-            Debug.Log("Time left to exit:"+(exitAt-Time.time));
-        }
     }
 
     private void OnTriggerExit(Collider other)

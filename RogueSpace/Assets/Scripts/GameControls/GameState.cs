@@ -9,10 +9,10 @@ public class GameState : MonoBehaviour {
 
     public Dictionary<ResourceType, int> resources = new Dictionary<ResourceType, int>();
 
-    public List<GameObject> items = new List<GameObject>();
+    public List<InventoryItem> items = new List<InventoryItem>();
 
     [SerializeField]
-    private GameObject _defaultGun;
+    private Gun _defaultGun;
 
     public ShipConfig shipConfig = new ShipConfig();
 
@@ -32,9 +32,7 @@ public class GameState : MonoBehaviour {
         items.Add(_defaultGun);
         shipConfig.mainWeapon = _defaultGun;
 
-        AddResource(ResourceType.COPPER_INGOT, 5);
-        
-
+        AddResource(ResourceType.COPPER_INGOT, 5);        
     }    
 
     public void AddResource(ResourceType type, int amount)
@@ -45,6 +43,11 @@ public class GameState : MonoBehaviour {
         }
         resources[type] += amount;
     }
+
+    public void AddLoot(InventoryItem loot)
+    {
+        items.Add(loot);
+    }
     
 	
 }
@@ -52,5 +55,5 @@ public class GameState : MonoBehaviour {
 [Serializable]
 public class ShipConfig
 {
-    public GameObject mainWeapon;
+    public Gun mainWeapon;
 }
