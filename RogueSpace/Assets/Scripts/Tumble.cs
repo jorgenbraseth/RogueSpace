@@ -9,8 +9,9 @@ public class Tumble : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * _tumbleAmount;		
-	}
+        GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * _tumbleAmount;        
+    }
 	
 
 }
+

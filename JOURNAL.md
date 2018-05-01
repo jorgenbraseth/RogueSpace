@@ -92,3 +92,39 @@ Next steps:
 -- Reach a certain destination
 
 Most of the objectives above should have some sort of visual objective pointer - looking forward to implementing that.
+
+## 15.Apr 2018 - 22:50
+I keep forgetting to write my journal! Oh well. 
+Today I have done several things, all in the interest of working towards a simple crafting model.
+I have:
+- Changed the look of the minimap (ok that was just for fun)
+- Added a "ship customization" scene, where you will be able to choose which weapons/items to equip your ship with.
+- Rewritten some internal code related to guns, working towards making them more suited as equippable inventory items.
+- Spent way too much time trying to get reflections to work, only to find out what I was looking for (planar reflections) isn't really included in Unity, you have to buy it from Asset Store :(
+
+At the end of the night, I have:
+- Logic that makes it possible to switch which gun you start the game with.
+- A "ship customization" screen that does nothing.
+- The start of an inventory vizualisation of guns.
+
+I need to figure out how to best make guns BOTH inventory items and actual game objects. Maybe make a parent object for the item, with UI-stuff and gameplay objects as separate children, with the key values as values on the root parent?
+
+## 22.Apr 2018 - 23:53
+Not too much work done today, but I did get a bit further on the ship customization. I have now made it possible to equip weapons from the inventory. I want equipping of items to be done from a different screen, but that can be done later. 
+I ended up making a UI element that can wrap an item instead of making the parent-child structure mentioned in the previous post. I think this is better. It means all items need a name, an icon, a description, etc, but it other than the icon, nothing UI-specific. I probably want the icon for display in game mode anyway, so I think it works out.
+Next step: have the boss drop a weapon and make the inventory list that new weapon. To do so I have to:
+- Fix it so UI-elements for weapons are dynamically created when loading the inventory screen.
+- Make a loot box gameobject that can contain items.
+
+This should be fun!
+
+## 30.Apr 2018 - 21:11
+Tonight I did the two things I decided to do last time: I made the boss drop loot, and I made the loot show up in the inventory. The loot box is just a cube with a debug texture on it for now.
+Possible next steps (haven't decided yet):
+- Make the crafting screen
+- Make a beam weapon (really looking forward to that one!)
+
+Just had an idea about resources for items... I think i will let the resources only have a "quality" rating, and then ingots or whatever you make from the raw materials will have "hardness","conductivity", etc.
+
+## 1.May 2018 - 23:05
+I ended up just playing around with looks of things today. Added some fonts, changed the look of the main menu. I also tested using cell/toon shading for the models and I kind of like it. It might also make it a bit easier to create models/textures for me. We will see...

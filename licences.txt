@@ -1,0 +1,4 @@
+CC images:
+rocket.png - Anstey Design
+spiral-galaxy-icon - Hanna Strobel
+asteroid.png - Meaghan Hendricks
