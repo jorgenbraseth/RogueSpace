@@ -128,3 +128,21 @@ Just had an idea about resources for items... I think i will let the resources o
 
 ## 1.May 2018 - 23:05
 I ended up just playing around with looks of things today. Added some fonts, changed the look of the main menu. I also tested using cell/toon shading for the models and I kind of like it. It might also make it a bit easier to create models/textures for me. We will see...
+
+## 3.May 2018 - 20:40
+Last night and today I've been working on a crafting system. I don't really like the look of it and there's a bunch of bugs and only one recipe (Iron ingots), but the functionality is there. Quite happy about that!
+I think the next stuff to be done is:
+- Add a blueprint for the heavy blaster
+-- This is going to force me to look at item properties (Hardness, Conductivity, etc) some more and probably rewrite some of the stuff I did with the "basic" crafting I just finished.
+- Make the boss drop an exotic ingot and make that part of the blueprint?
+
+I feel that once the crafting system is somewhat in place, I can maybe start looking at some more "actual" gameplay again. I want to make a couple of more maps, and make them a bit more interesting. My biggest concern right now is: Can I make this game actual fun to play?
+I think there are a couple of quite important points I need to make this work:
+- An overall sense of direction
+-- A better feel of where to go on the map. The boundless map that I have now doesn't really cut it... Or should I make a boundless map, and make enemies/resources spawn at random (expect specific bosses)? Hmmm... I might look into that some more. A "map spawner" logic might be fun to make...
+-- Clearer objectives, either imposed (quests, completion criteria, etc.) or user controller (I need 10 more exotic ore). The last part might be fun if a user could see what KIND of stuff appears in a map, but the map isn't the same all the time (like mentioned above. hmmm... I'm liking that idea better and better)
+- Something to keep players playing. Crafting and quests might be enough to start.
+- Better gameplay feel
+-- The controls need improvement
+-- UI is somewhat cluttered
+-- What is a good zoom-level?
