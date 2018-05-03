@@ -44,18 +44,7 @@ public class Player : MonoBehaviour {
     {
         level.Died();
     }
-
-    public Dictionary<ResourceType, int> lootedResources = new Dictionary<ResourceType, int>();
-    public bool AddResource(ResourceType type, int amount)
-    {
-        if (!lootedResources.ContainsKey(type))
-        {
-            lootedResources[type] = 0;
-        }
-        lootedResources[type] += amount;
-        return true;
-    }
-	
+    	
     private void ConfigureShip()
     {
         mainGun = Instantiate(gameState.shipConfig.mainWeapon, mainGunMountPoint.transform);
@@ -69,7 +58,6 @@ public class Player : MonoBehaviour {
     public List<InventoryItem> lootedItems = new List<InventoryItem>();
     public bool AddLoot(InventoryItem loot)
     {
-        Debug.Log(loot);
         lootedItems.Add(loot);
         return true;
     }

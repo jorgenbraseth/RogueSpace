@@ -15,7 +15,7 @@ public class Blaster : Gun {
     private int damage = 1;
 
     [SerializeField]
-    private string name;
+    private string weaponName;
 
     private void Start()
     {
@@ -42,11 +42,17 @@ public class Blaster : Gun {
 
     public override string GetName()
     {
-        return name;
+        return weaponName;
     }
 
     public override string GetProperties()
     {
         return damage + " damage";
     }
+
+    public override EquipPosition GetEquippablePosition()
+    {
+        return EquipPosition.MAIN_GUN;
+    }
+
 }

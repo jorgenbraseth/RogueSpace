@@ -66,10 +66,10 @@ public class LevelManager : MonoBehaviour {
         return null;
     }
 
-    public void CratedLoot(InventoryItem loot, Vector3 position, Quaternion rotation)
+    public LootCrate CratedLoot(InventoryItem loot, Vector3 position, Quaternion rotation)
     {
         lootCratePrefab.SetLoot(loot);
-        LootCrate crate = Instantiate(lootCratePrefab, position, rotation);        
+        return Instantiate(lootCratePrefab, position, rotation);        
     }
 
     private void EndLevel()
@@ -83,11 +83,7 @@ public class LevelManager : MonoBehaviour {
     }
 
     public void LevelComplete()
-    {
-        foreach(KeyValuePair<ResourceType,int> loot in player.lootedResources) {
-            gameState.AddResource(loot.Key, loot.Value);
-        }
-
+    {        
         foreach(InventoryItem loot in player.lootedItems)
         {
             gameState.AddLoot(loot);           

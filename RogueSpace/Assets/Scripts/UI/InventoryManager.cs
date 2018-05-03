@@ -5,22 +5,27 @@ using UnityEngine;
 public class InventoryManager : MonoBehaviour {
 
     [SerializeField]
-    private UIInventoryItemWeapon inventoryWeaponPrefab;
-
+    private UIInventoryItem inventoryItemUIPrefab;
+   
     private GameState state;
 	
 	void Start () {
-        state = GameObject.Find("GameState").GetComponent<GameState>();   
+        state = GameState.Find();   
 
         foreach (InventoryItem item in state.items)
         {
             Gun gun = item.GetComponent<Gun>();
             if (gun != null)
-            {                
-                UIInventoryItemWeapon itemIcon = Instantiate(inventoryWeaponPrefab, transform);
+            {
+                UIInventoryItem itemIcon = Instantiate(inventoryItemUIPrefab, transform);
                 itemIcon.SetItem(gun);                
             }
             
+        }
+        foreach (ResourceInventoryItem item in state.resources)
+        {
+            UIInventoryItem uiItem = Instantiate(inventoryItemUIPrefab, transform);
+            uiItem.SetItem(item);
         }
     }
 

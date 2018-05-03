@@ -56,4 +56,4 @@ MonoBehaviour:
     type: 2}
   fireRate: 0.2
   damage: 55
-  name: Heavy Blaster
+  weaponName: Heavy Blaster

@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f800361bbb0a52447bc8fcfbaf65e4a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
+  loot: {fileID: 114866068364407324, guid: ebf7e6ee5f3c89d4691b24f95bb1da06, type: 2}
 --- !u!114 &114862341631426462
 MonoBehaviour:
   m_ObjectHideFlags: 1

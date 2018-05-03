@@ -19,30 +19,28 @@ public class InventoryItemDescription : MonoBehaviour {
 
     private GameState _gameState;
 
-    private UIInventoryItemWeapon _selectedItem;
+    private InventoryItem _selectedItem;
 
     private void Start()
     {
         _gameState = GameObject.Find("GameState").GetComponent<GameState>();
     }
 
-    public void SetItem(string name, string description, string properties, UIInventoryItemWeapon item)
+    public void SetItem(InventoryItem item)
     {
         _selectedItem = item;
-        title.text = name;
+        title.text = item.GetName();
         this.description.supportRichText = true;
-        this.description.text = description;
-        this.properties.text = properties;
+        this.description.text = item.GetDescription();
+        this.properties.text = item.GetProperties();
 
-        equipButton.SetActive(item != null && item.EquippablePosition() != EquipPosition.NONE);
-        
-
+        equipButton.SetActive(item.GetEquippablePosition() != EquipPosition.NONE);       
     }
 
     public void EquipSelected()
     {
         Debug.Log(title.text + "equipped in position " + EquipPosition.MAIN_GUN);
-        _gameState.shipConfig.mainWeapon = _selectedItem.gun;
+        _gameState.shipConfig.mainWeapon = (Gun)_selectedItem;
     }
 
 }

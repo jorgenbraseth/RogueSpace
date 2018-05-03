@@ -76,7 +76,7 @@ GameObject:
   m_Layer: 14
   m_Name: Enemy
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -343,6 +343,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 20
   lootAmount: 3
+  specialLoot: []
   deathEffect: {fileID: 1158286819535626, guid: e1487678abbd07e4789d8520d28645f7,
     type: 2}
   health: 0

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public abstract class UIInventoryItem: MonoBehaviour, IPointerClickHandler {
+public class UIInventoryItem: MonoBehaviour, IPointerClickHandler {
 
     [SerializeField]
     private Color selectedColor = new Color(114,193,255);
@@ -19,19 +19,54 @@ public abstract class UIInventoryItem: MonoBehaviour, IPointerClickHandler {
 
     private InventoryItemDescription itemInfo;
 
+    [SerializeField]
+    private Text amountText;
+
+    [SerializeField]
+    public ResourceType resourceType;
+
+    [SerializeField]
+    private string title;
+
+    [SerializeField]
+    private string description;
+
+    [SerializeField]
+    private string properties;
+
+    private InventoryItem item;
+
+
     private void Awake()
     {
         itemInfo = GameObject.Find("ItemInfo").GetComponent<InventoryItemDescription>();
         inventoryManager = GameObject.Find("InventoryManager").GetComponent<InventoryManager>();
-
     }
+
+
+    private void SetAmount(int amount)
+    {
+        amountText.text = amount + "";
+        gameObject.SetActive(amount != 0);
+    }
+
 
     public void SetIcon(Sprite icon)
     {
         this.icon.sprite = icon;
     }
 
-    abstract public void UpdateInfo(InventoryItemDescription ii);
+    public void SetItem(InventoryItem item)
+    {
+        SetAmount(item.GetCount());
+        SetIcon(item.icon);
+        this.item = item;
+    }
+
+    public void UpdateInfo(InventoryItemDescription ii)
+    {
+        ii.SetItem(item);
+    }
     
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -48,7 +83,10 @@ public abstract class UIInventoryItem: MonoBehaviour, IPointerClickHandler {
     {
         GetComponent<Image>().color = unselectedColor;
     }
-
-    public abstract EquipPosition EquippablePosition();
+    
+    public EquipPosition EquippablePosition()
+    {
+        return item.GetEquippablePosition();
+    }
 }
 

@@ -53,6 +53,4 @@ public class BlasterShot : IBlasterShot {
         Destroy(gameObject);
     }
 
-
-
 }

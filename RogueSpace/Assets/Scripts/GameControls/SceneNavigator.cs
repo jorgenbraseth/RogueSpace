@@ -24,4 +24,9 @@ public class SceneNavigator : MonoBehaviour {
     {
         SceneManager.LoadScene("ShipCustomization");
     }
+
+    public void Crafting()
+    {
+        SceneManager.LoadScene("Crafting");
+    }
 }

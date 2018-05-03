@@ -5,14 +5,14 @@ using UnityEngine;
 public class Ore : MonoBehaviour {
 
     [SerializeField]
-    private ResourceType type;
+    private ResourceInventoryItem loot;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
             Player p = other.gameObject.GetComponent<Player>();
-            if (p.AddResource(type, 1))
+            if (p.AddLoot(loot))
             {
                 Destroy(gameObject);
             }
