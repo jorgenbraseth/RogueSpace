@@ -146,3 +146,21 @@ I think there are a couple of quite important points I need to make this work:
 -- The controls need improvement
 -- UI is somewhat cluttered
 -- What is a good zoom-level?
+
+## 6.May 2018 - 22:15
+Added the endless map and a spawning system for it tonight and I couldn't be happier with it! 
+I ended up implementing a really simple grid based system: 
+- Slice the map into grid
+- Whenever player enters a grid cell where no spawn has been made eralier, spawn a random "spawn group" in that cell and any surrounding cells that are also missing spawns.
+
+The "spawn groups" are jsut prefabs of areas with enemies, resources, etc. Which means I can customize them how much I want. 
+I will probably make asteroid fields, etc be highly random, while boss encounters and the like will probably be more scripted/static.
+This endelss map thing means a player can basically "grind" forever, in search of whatever she needs.
+
+Very happy with this, as it also means I can delay doing a lot of level design work, and instead just design new spawn groups whenever I feel like it, or get an idea.
+
+Oh, and I also hooked the game up to [Googles Firebase](https://firebase.google.com/) and started looking at persisting player state to the cloud.
+
+I think my next task now should be to fix some tech debt so I can finish the Firebase linking.
+
+I also had an idea to make the waypoint-arrows be placed inside the minimap instead of around the screen. Will make a Trello card for that.
