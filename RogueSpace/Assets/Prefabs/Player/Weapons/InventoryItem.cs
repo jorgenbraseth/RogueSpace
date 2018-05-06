@@ -1,8 +1,6 @@
-﻿using System;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
-[Serializable]
+[System.Serializable]
 public abstract class InventoryItem : MonoBehaviour {
     public abstract string GetDescription();
     public abstract string GetName();
@@ -15,4 +13,6 @@ public abstract class InventoryItem : MonoBehaviour {
     public Sprite icon;
 
     public abstract EquipPosition GetEquippablePosition();
+
 }
+

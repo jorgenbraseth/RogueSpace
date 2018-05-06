@@ -1,12 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour {
-
-    [SerializeField]
-    private Player player;
+    
+    public Player player;
 
     [SerializeField]
     private ModalWindow youWin;
@@ -14,6 +14,7 @@ public class LevelManager : MonoBehaviour {
     [SerializeField]
     private ModalWindow youLoose;
 
+   
     [SerializeField]
     private LootChance[] lootTable;
 
@@ -34,7 +35,7 @@ public class LevelManager : MonoBehaviour {
         Time.timeScale = 1;
         gameState = GameObject.Find("GameState").GetComponent<GameState>();
 
-        exit.SetActive(false);
+        //exit.SetActive(false);
 
         InitPointers(); //TODO: add pointers through level manager     
 
@@ -53,7 +54,7 @@ public class LevelManager : MonoBehaviour {
             sumOfChances += loot.chance;               
         }
 
-        float picked = Random.Range(0f, sumOfChances);
+        float picked = UnityEngine.Random.Range(0f, sumOfChances);
         foreach (LootChance loot in lootTable)
         {
             picked -= loot.chance;
@@ -95,4 +96,10 @@ public class LevelManager : MonoBehaviour {
     {
         youLoose.Open(EndLevel);        
     }
+
+    public static LevelManager Find()
+    {
+        return GameObject.Find("LevelManager").GetComponent<LevelManager>();
+    }
+
 }

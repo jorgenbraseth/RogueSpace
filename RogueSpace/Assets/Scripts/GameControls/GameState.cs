@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using Firebase;
+using Firebase.Unity.Editor;
+using Firebase.Database;
+
 
 public class GameState : MonoBehaviour {
 
@@ -10,21 +14,20 @@ public class GameState : MonoBehaviour {
     [SerializeField]
     private List<ResourceInventoryItem> startingResources = new List<ResourceInventoryItem>();
 
-    public List<ResourceInventoryItem> resources = new List<ResourceInventoryItem>();
-
-    public List<InventoryItem> items = new List<InventoryItem>();
-
+    public Inventory inventory = new Inventory();
+    
     [SerializeField]
     private Gun _defaultGun;
 
     public ShipConfig shipConfig = new ShipConfig();
 
+    DatabaseReference firebase;
+
     private void Awake()
     {
         if (INSTANCE == null)
         {
-            INSTANCE = this;
-            AddStartInventory();            
+            Init();
         }
         else
         {
@@ -32,6 +35,27 @@ public class GameState : MonoBehaviour {
         }
         DontDestroyOnLoad(gameObject);    
               
+    }
+
+    private void SaveState()
+    {
+        InventoryEntries entries = new InventoryEntries();        
+        foreach (InventoryItem it in inventory.resources)
+        {
+            entries.items.Add(InventoryEntry.From(it));
+        }
+        
+        
+        firebase.Child("users").Child("username").Child("gamestate").Child("inventory").SetRawJsonValueAsync(JsonUtility.ToJson(entries));
+    }
+
+    private void Init()
+    {
+        INSTANCE = this;        
+        FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://roguespace-gamestate.firebaseio.com/");
+        firebase = FirebaseDatabase.DefaultInstance.RootReference;
+        AddStartInventory();
+        SaveState();
     }
 
     private void AddStartInventory()
@@ -45,14 +69,14 @@ public class GameState : MonoBehaviour {
         if (_defaultGun != null) {
             AddLoot(_defaultGun);
             _defaultGun = null;
-            shipConfig.mainWeapon = (Gun)items[0];
+            shipConfig.mainWeapon = (Gun)inventory.items[0];
         }
     }
 
     private void AddResource(ResourceInventoryItem loot)
     {
         bool found = false;
-        foreach (ResourceInventoryItem res in resources)
+        foreach (ResourceInventoryItem res in inventory.resources)
         {
             if (res.resourceType == loot.resourceType)
             {
@@ -65,13 +89,13 @@ public class GameState : MonoBehaviour {
         if(!found)
         {
             DontDestroyOnLoad(loot);
-            resources.Add(loot);
+            inventory.resources.Add(loot);
         }
     }
     private void RemoveResource(ResourceInventoryItem loot)
     {
         List<ResourceInventoryItem> toRemove = new List<ResourceInventoryItem>();
-        foreach (ResourceInventoryItem res in resources)
+        foreach (ResourceInventoryItem res in inventory.resources)
         {
             if (res.resourceType == loot.resourceType)
             {
@@ -86,7 +110,7 @@ public class GameState : MonoBehaviour {
 
         foreach (ResourceInventoryItem res in toRemove)
         {
-            resources.Remove(res);
+            inventory.resources.Remove(res);
         }
     }
     public void RemoveLoot(InventoryItem loot)
@@ -97,7 +121,7 @@ public class GameState : MonoBehaviour {
         }
         else
         {
-            items.Remove(loot);
+            inventory.items.Remove(loot);
         }
     }
 
@@ -111,8 +135,9 @@ public class GameState : MonoBehaviour {
         else
         {
             DontDestroyOnLoad(loot);
-            items.Add(loot);
-        }        
+            inventory.items.Add(loot);
+        }
+        SaveState();
     }
 
     public static GameState Find()
@@ -127,4 +152,12 @@ public class GameState : MonoBehaviour {
 public class ShipConfig
 {
     public Gun mainWeapon;
+}
+
+[Serializable]
+public class Inventory
+{
+    [SerializeField]
+    public List<ResourceInventoryItem> resources = new List<ResourceInventoryItem>();
+    public List<InventoryItem> items = new List<InventoryItem>();
 }

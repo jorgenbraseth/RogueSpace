@@ -12,7 +12,7 @@ public class InventoryManager : MonoBehaviour {
 	void Start () {
         state = GameState.Find();   
 
-        foreach (InventoryItem item in state.items)
+        foreach (InventoryItem item in state.inventory.items)
         {
             Gun gun = item.GetComponent<Gun>();
             if (gun != null)
@@ -22,7 +22,7 @@ public class InventoryManager : MonoBehaviour {
             }
             
         }
-        foreach (ResourceInventoryItem item in state.resources)
+        foreach (ResourceInventoryItem item in state.inventory.resources)
         {
             UIInventoryItem uiItem = Instantiate(inventoryItemUIPrefab, transform);
             uiItem.SetItem(item);

@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "290452002268",
+    "firebase_url": "https://roguespace-gamestate.firebaseio.com",
+    "project_id": "roguespace-gamestate",
+    "storage_bucket": "roguespace-gamestate.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:290452002268:android:157e60f083b37543",
+        "android_client_info": {
+          "package_name": "com.roguespace"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "290452002268-f8ll34k1vtnp7t6pe9fhg7jlnvlcncvi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDB7m1NcBlF4MFWjsCJ2H6pXjwlEQp0Mp0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

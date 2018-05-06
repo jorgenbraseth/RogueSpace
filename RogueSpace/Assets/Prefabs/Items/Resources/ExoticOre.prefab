@@ -38,7 +38,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68871d2afb7d82242aeec0575c243b11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: e99a80dc472baa146af09afb001ea6c5, type: 3}
+  icon: {fileID: 21300000, guid: ec3615a14658a674982eb312a5e79e36, type: 3}
   count: 1
   description: This rock is glowing! Spooky...
   resourceName: Exotic Ore

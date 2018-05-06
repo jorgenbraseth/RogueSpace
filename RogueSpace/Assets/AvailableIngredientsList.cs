@@ -39,7 +39,7 @@ public class AvailableIngredientsList : MonoBehaviour
         }
         if (craftingManager.currentIngredient.IsResource())
         {
-            foreach (ResourceInventoryItem res in gamestate.resources)
+            foreach (ResourceInventoryItem res in gamestate.inventory.resources)
             {
                 if (res.resourceType == craftingManager.currentIngredient.GetResourceType())
                 {
