@@ -90,6 +90,7 @@ public class ObjectivePointers : MonoBehaviour {
             p.SetActive(obj.activeInHierarchy && !GeometryUtility.TestPlanesAABB(planes, objCol.bounds));
 
             Vector3 diff = objScreenPos - centerScreen;
+            diff = Vector3.ClampMagnitude(diff, 30);
             float angle = Vector3.Angle(new Vector3(0, 1, 0), diff);
 
             if (diff.x > 0)
@@ -98,9 +99,11 @@ public class ObjectivePointers : MonoBehaviour {
             }
 
             p.transform.localRotation = Quaternion.Euler(0, 0, angle);
-            Vector3 ppos = objScreenPos;
-            ppos.x = Mathf.Clamp(ppos.x, 30, Screen.width - 30);
-            ppos.y = Mathf.Clamp(ppos.y, 30, Screen.height - 30);
+            //Vector3 ppos = objScreenPos;                        
+            //ppos.x = Mathf.Clamp(ppos.x, 30, Screen.width - 30);
+            //ppos.y = Mathf.Clamp(ppos.y, 30, Screen.height - 30);            
+            Vector3 ppos = Vector3.ClampMagnitude(objScreenPos - centerScreen, 180) + gameObject.transform.position;
+            ppos.y = Mathf.Clamp(ppos.y, 10, Screen.height - 10);
             p.transform.position = ppos;
         }
     }
