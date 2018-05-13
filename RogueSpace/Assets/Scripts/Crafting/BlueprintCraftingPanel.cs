@@ -25,8 +25,8 @@ public class BlueprintCraftingPanel : MonoBehaviour {
     private void SetBlueprint(Blueprint bp)
     {
         this.blueprint = bp;
-        title.text = bp.createsItem.GetName();
-        description.text = bp.createsItem.GetDescription();
+        title.text = bp.createsItem.itemName;
+        description.text = bp.createsItem.itemDescription;
     }
 
 }

@@ -164,3 +164,16 @@ Oh, and I also hooked the game up to [Googles Firebase](https://firebase.google.
 I think my next task now should be to fix some tech debt so I can finish the Firebase linking.
 
 I also had an idea to make the waypoint-arrows be placed inside the minimap instead of around the screen. Will make a Trello card for that.
+
+## 13.May 2018 - 23:55
+I'm not happy... I finally managed to make saving to/loading from firebase work, but the code looks like shit... 
+What I ended up doing was:
+- Create an "Item library" that contains all items that could ever be put in an inventory.
+- Force all such items to have an item key, along with certain properties that can vary between instances of the items and an id for the specific items.
+- Serialize to/from json by implementing ToJson/FromJson methods on each type of item.
+
+It works, but I end up having really hard to read code, and with lots of boiler plate for each new item I create. I don`t like it, but it works, and maybe I will see a better solution later.
+
+On the plus side, while skimming through [/r/gamedev/](https://www.reddit.com/r/gamedev/) I found this great site that has a bunch of cool music well suited for games, that you can (mostly) use for free! Check out [Fugue](https://icons8.com/music/)!
+
+Oh, and I ended up swithing to cell shading using [Toony Colors Pro 2](https://assetstore.unity.com/packages/vfx/shaders/toony-colors-pro-2-8105) for my graphics, and a lighter background. I kinda like it for now. We will see :)

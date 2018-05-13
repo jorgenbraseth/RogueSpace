@@ -20,12 +20,12 @@ public class Asteroid : MonoBehaviour, IDamagable {
 
     private void Awake()
     {        
-        _oreAmount = (int)transform.localScale.x/100-2;
+        _oreAmount = (int)((transform.localScale.x - 0.5f) * 2);
     }
 
     private void Update()
     {
-        transform.localScale = Vector3.one * (_oreAmount+2)*100;
+        transform.localScale = Vector3.one * ((_oreAmount + 1 ) / 2);
     }
     
     private void LateUpdate()

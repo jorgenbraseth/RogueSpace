@@ -47,7 +47,7 @@ public class CraftingManager : MonoBehaviour {
             IngredientFullfilment.Add(needed, null);
             NeededIngredient added = Instantiate(neededIngredientPrefab, neededIngredientsList.transform);
             added.ingredient = needed;
-            added.text.text = added.ingredient.GetName() + " x" + added.ingredient.GetCount();
+            added.text.text = added.ingredient.itemName + " x" + added.ingredient.GetCount();
         }
     }
 
@@ -79,10 +79,11 @@ public class CraftingManager : MonoBehaviour {
     {
         foreach(InventoryItem ingredient in currentBlueprint.ingredients)
         {
-            gamestate.RemoveLoot(ingredient);
+            gamestate.inventory.RemoveLoot(ingredient);
         }
-        gamestate.AddLoot(currentBlueprint.createsItem);        
-        availableIngredientsList.UpdateList();        
+        gamestate.inventory.AddLoot(gamestate.itemLibrary.Create(currentBlueprint.createsItem.itemLibraryKey));        
+        availableIngredientsList.UpdateList();
+        gamestate.SaveState();
     }
 
     public static CraftingManager Find()

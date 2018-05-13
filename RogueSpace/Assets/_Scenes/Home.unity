@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: b13109bc4674dd24ebc04b7c12437ad6, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 80836983aad3a3f46b55cf30d506d6ce, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -624,6 +624,11 @@ Prefab:
       propertyPath: startingResources.Array.data[0]
       value: 
       objectReference: {fileID: 1167086638}
+    - target: {fileID: 114629325262068618, guid: 069a842c326cbb54a95ee6469aa619dd,
+        type: 2}
+      propertyPath: shipConfig.mainWeapon
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 069a842c326cbb54a95ee6469aa619dd, type: 2}
   m_IsPrefabParent: 0

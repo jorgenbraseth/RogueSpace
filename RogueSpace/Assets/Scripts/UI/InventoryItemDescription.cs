@@ -29,18 +29,17 @@ public class InventoryItemDescription : MonoBehaviour {
     public void SetItem(InventoryItem item)
     {
         _selectedItem = item;
-        title.text = item.GetName();
+        title.text = item.itemName;
         this.description.supportRichText = true;
-        this.description.text = item.GetDescription();
+        this.description.text = item.itemDescription;
         this.properties.text = item.GetProperties();
 
         equipButton.SetActive(item.GetEquippablePosition() != EquipPosition.NONE);       
     }
 
     public void EquipSelected()
-    {
-        Debug.Log(title.text + "equipped in position " + EquipPosition.MAIN_GUN);
-        _gameState.shipConfig.mainWeapon = (Gun)_selectedItem;
+    {        
+        _gameState.Equip((Gun)_selectedItem);
     }
 
 }

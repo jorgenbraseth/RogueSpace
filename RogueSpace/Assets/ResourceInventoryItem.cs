@@ -6,29 +6,25 @@ using UnityEngine;
 [Serializable]
 public class ResourceInventoryItem : InventoryItem
 {
-    public int count;
-    public string description;
-    public string resourceName;
-    public ResourceType resourceType;
+
+    [SerializeField]
+    private ResourceType resourceType;
+
+    public ResourceProperties props;
+
+    private void Awake()
+    {
+        props.itemKey = itemLibraryKey;
+    }
 
     public override int GetCount()
     {
-        return count;
-    }
-
-    public override string GetDescription()
-    {
-        return description;
-    }
+        return props.count;
+    }    
 
     public override EquipPosition GetEquippablePosition()
     {
         return EquipPosition.NONE;
-    }
-
-    public override string GetName()
-    {
-        return resourceName;
     }
 
     public override string GetProperties()
@@ -45,4 +41,29 @@ public class ResourceInventoryItem : InventoryItem
     {
         return true;
     }
+
+    public override InventoryItem InstantiateFromJson(string json)
+    {
+        var newprops = JsonUtility.FromJson<ResourceProperties>(json);
+        var newme = Instantiate(this);
+        newme.props = newprops;
+        newme.SetId(newprops.id);
+        return newme;
+    }    
+
+    internal void AddAmount(int toAdd)
+    {
+        props.count += toAdd;
+    }
+
+    public override SerializableProperties SerializableValues()
+    {
+        return props;
+    }
+}
+
+[Serializable]
+public class ResourceProperties : SerializableProperties
+{
+    public int count;
 }

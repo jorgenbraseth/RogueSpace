@@ -10,7 +10,7 @@ public class Blueprint : MonoBehaviour {
 }
 
 
-public enum MaterialProperty
+public enum MaterialPropertyThingy
 {
     CONDUCTIVITY, TOUGHNESS, REACTIVENESS, WEIGHT
 }

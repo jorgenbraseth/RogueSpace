@@ -35,6 +35,8 @@ public class LevelManager : MonoBehaviour {
         Time.timeScale = 1;
         gameState = GameObject.Find("GameState").GetComponent<GameState>();
 
+        
+
         //exit.SetActive(false);
 
         InitPointers(); //TODO: add pointers through level manager     
@@ -87,8 +89,9 @@ public class LevelManager : MonoBehaviour {
     {        
         foreach(InventoryItem loot in player.lootedItems)
         {
-            gameState.AddLoot(loot);           
+            gameState.inventory.AddLoot(gameState.itemLibrary.Create(loot.itemLibraryKey));           
         }
+        gameState.SaveState();
         youWin.Open(EndLevel);
     }
 

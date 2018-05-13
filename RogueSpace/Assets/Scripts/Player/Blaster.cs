@@ -7,19 +7,14 @@ public class Blaster : Gun {
 
     [SerializeField]
     private BlasterShot projectile;
-
+       
     [SerializeField]
-    private float fireRate = 0.1f;
+    private BlasterProperties props;
 
-    [SerializeField]
-    private int damage = 1;
-
-    [SerializeField]
-    private string weaponName;
-
-    private void Start()
+    private void Awake()
     {
-        projectile.Configure(this.damage);
+        props.itemKey = itemLibraryKey;
+        projectile.Configure(this.props.damage);
     }    
 
     private float nextFire;	
@@ -29,30 +24,41 @@ public class Blaster : Gun {
         if (Time.time > nextFire)
         {
             Instantiate(projectile.gameObject, transform.position, Quaternion.LookRotation(aim));
-            nextFire = Time.time + fireRate;
+            nextFire = Time.time + props.fireRate;
         }
     }
 
-    public override int GetDamage() { return damage; }
-
-    public override string GetDescription()
-    {
-        return "Blasts stuff";
-    }
-
-    public override string GetName()
-    {
-        return weaponName;
-    }
+    public override int GetDamage() { return props.damage; }   
 
     public override string GetProperties()
     {
-        return damage + " damage";
+        return props.damage + " damage";
     }
 
     public override EquipPosition GetEquippablePosition()
     {
         return EquipPosition.MAIN_GUN;
     }
+    
+    public override InventoryItem InstantiateFromJson(string json)
+    {
+        var newprops = JsonUtility.FromJson<BlasterProperties>(json);
+        var newme = Instantiate(this);
+        newme.props = newprops;
+        newme.SetId(newprops.id);
+        return newme;
+    }
 
+    public override SerializableProperties SerializableValues()
+    {
+        return props;
+    }
+}
+
+[System.Serializable]
+public class BlasterProperties : SerializableProperties
+{
+    public float fireRate = 0.1f;
+
+    public int damage = 1;
 }

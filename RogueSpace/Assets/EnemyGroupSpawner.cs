@@ -23,9 +23,9 @@ public class EnemyGroupSpawner : MonoBehaviour {
         Vector3 gridPos = playerGridPos();
         if (spawnedLocations.Count == 0 || !gridPos.Equals(prevGridPos))
         {
-            for (float x = gridPos.x - 2; x <= gridPos.x + 1; x++)
+            for (float x = gridPos.x - 1; x <= gridPos.x + 1; x++)
             {
-                for (float y = gridPos.y - 2; y <= gridPos.y + 1; y++)
+                for (float y = gridPos.y - 1; y <= gridPos.y + 1; y++)
                 {
                     Vector3 pos = new Vector3(x, y, 0);
                     if (!spawnedLocations.Contains(pos))
@@ -53,7 +53,7 @@ public class EnemyGroupSpawner : MonoBehaviour {
     private GameObject SpawnAt(Vector3 gridPos)
     {
         spawnedLocations.Add(gridPos);
-        Vector3 posistionRandomness = Random.insideUnitCircle / 2;
+        Vector3 posistionRandomness = Random.insideUnitCircle * 0.6f;
         posistionRandomness.y = 0;
 
         Vector3 spawnGridLocation = new Vector3(gridPos.x + 0.5f, 0, gridPos.y + 0.5f);

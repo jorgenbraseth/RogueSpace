@@ -19,6 +19,8 @@ public class GameState : MonoBehaviour {
     [SerializeField]
     private Gun _defaultGun;
 
+    public ItemLibrary itemLibrary = new ItemLibrary();
+
     public ShipConfig shipConfig = new ShipConfig();
 
     DatabaseReference firebase;
@@ -37,108 +39,94 @@ public class GameState : MonoBehaviour {
               
     }
 
-    private void SaveState()
-    {
-        InventoryEntries entries = new InventoryEntries();        
-        foreach (InventoryItem it in inventory.resources)
-        {
-            entries.items.Add(InventoryEntry.From(it));
-        }
-        
-        
-        firebase.Child("users").Child("username").Child("gamestate").Child("inventory").SetRawJsonValueAsync(JsonUtility.ToJson(entries));
+    public void SaveState()
+    {       
+        firebase.Child("users").Child("username")
+            .Child("gamestate").Child("inventory")
+            .SetRawJsonValueAsync(inventory.ToJson());
+
+        firebase.Child("users").Child("username")
+            .Child("gamestate").Child("shipconfig")
+            .SetRawJsonValueAsync(shipConfig.ToJson());
     }
 
     private void Init()
-    {
+    {        
         INSTANCE = this;        
         FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://roguespace-gamestate.firebaseio.com/");
         firebase = FirebaseDatabase.DefaultInstance.RootReference;
-        AddStartInventory();
-        SaveState();
+
+        itemLibrary.Load();
+        LoadInventory();
+        
+    }
+
+    private void LoadInventory()
+    {
+        firebase.Child("users").Child("username")
+            .Child("gamestate").GetValueAsync()
+            .ContinueWith(task => {
+                if (task.IsFaulted)
+                {
+                    // Handle the error...
+                    Debug.LogError("Not able to load data from cloud!");
+                }
+                else if (task.IsCompleted)
+                {
+                    DataSnapshot playergamestate = task.Result;
+                    if(playergamestate.Child("inventory").ChildrenCount > 0) {
+                        Debug.Log("Loading inventory from cloud");
+                        foreach (var child in playergamestate.Child("inventory").Children) {                        
+                            string itemKey = (string)child.Child("itemKey").Value;
+                            InventoryItem toAdd = itemLibrary.Create(itemKey).InstantiateFromJson(child.GetRawJsonValue());
+                            inventory.AddLoot(toAdd);
+                        }
+                    } else {
+                        Debug.Log("Adding initial inventory");
+                        AddStartInventory();
+                    }
+
+                    string mainGunId = (string)playergamestate.Child("shipconfig").Child("id").Value;
+                    Debug.Log(mainGunId);
+                    foreach (var item in inventory.items)
+                    {
+                        Debug.Log(item.GetId());
+                        if (item.GetId().Equals(mainGunId))
+                        {
+                            shipConfig.mainWeapon = item.GetComponent<Gun>();
+                            break;
+                        }
+                    }
+
+                }                         
+            })               
+            .ContinueWith(task => {
+                Debug.Log("Saving state");
+                SaveState();
+            });      
     }
 
     private void AddStartInventory()
-    {
+    {        
+        var gun = itemLibrary.Create(_defaultGun.itemLibraryKey);
+        inventory.AddLoot(gun);
+        Equip(inventory.items[0].GetComponent<Gun>());
+
         foreach (InventoryItem startingResource in startingResources)
         {
-            AddLoot(startingResource);
+            inventory.AddLoot(itemLibrary.Create(startingResource.itemLibraryKey));
         }
-        startingResources.Clear();
-
-        if (_defaultGun != null) {
-            AddLoot(_defaultGun);
-            _defaultGun = null;
-            shipConfig.mainWeapon = (Gun)inventory.items[0];
-        }
+        startingResources.Clear();        
     }
 
-    private void AddResource(ResourceInventoryItem loot)
+   
+    public void Equip(Gun gun)
     {
-        bool found = false;
-        foreach (ResourceInventoryItem res in inventory.resources)
-        {
-            if (res.resourceType == loot.resourceType)
-            {
-                res.count += loot.count;
-                found = true;
-                Destroy(loot);
-            }
-        }
-
-        if(!found)
-        {
-            DontDestroyOnLoad(loot);
-            inventory.resources.Add(loot);
-        }
-    }
-    private void RemoveResource(ResourceInventoryItem loot)
-    {
-        List<ResourceInventoryItem> toRemove = new List<ResourceInventoryItem>();
-        foreach (ResourceInventoryItem res in inventory.resources)
-        {
-            if (res.resourceType == loot.resourceType)
-            {
-                res.count -= loot.count;
-            }
-            if (res.count <= 0)
-            {
-                toRemove.Add(res);   
-            }
-                
-        }
-
-        foreach (ResourceInventoryItem res in toRemove)
-        {
-            inventory.resources.Remove(res);
-        }
-    }
-    public void RemoveLoot(InventoryItem loot)
-    {
-        if (loot.IsResource())
-        {
-            RemoveResource((ResourceInventoryItem)loot);
-        }
-        else
-        {
-            inventory.items.Remove(loot);
-        }
-    }
-
-    public void AddLoot(InventoryItem lootToAdd)
-    {
-        InventoryItem loot = Instantiate(lootToAdd);        
-        if (loot.IsResource())
-        {
-            AddResource((ResourceInventoryItem)loot);
-        }
-        else
-        {
-            DontDestroyOnLoad(loot);
-            inventory.items.Add(loot);
-        }
+        Debug.Log(gun.itemName + "equipped in position " + EquipPosition.MAIN_GUN);
+        shipConfig.mainWeapon = gun;
         SaveState();
     }
+    
 
     public static GameState Find()
     {
@@ -152,12 +140,9 @@ public class GameState : MonoBehaviour {
 public class ShipConfig
 {
     public Gun mainWeapon;
-}
 
-[Serializable]
-public class Inventory
-{
-    [SerializeField]
-    public List<ResourceInventoryItem> resources = new List<ResourceInventoryItem>();
-    public List<InventoryItem> items = new List<InventoryItem>();
+    internal string ToJson()
+    {
+        return JsonUtility.ToJson(mainWeapon.SerializableValues());
+    }
 }
