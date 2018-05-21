@@ -34,13 +34,10 @@ public class LevelManager : MonoBehaviour {
     {
         Time.timeScale = 1;
         gameState = GameObject.Find("GameState").GetComponent<GameState>();
-
         
-
-        //exit.SetActive(false);
+        player.ConfigureShip(gameState.shipConfig, gameState);
 
         InitPointers(); //TODO: add pointers through level manager     
-
     }    
 
     private void InitPointers()

@@ -177,3 +177,10 @@ It works, but I end up having really hard to read code, and with lots of boiler 
 On the plus side, while skimming through [/r/gamedev/](https://www.reddit.com/r/gamedev/) I found this great site that has a bunch of cool music well suited for games, that you can (mostly) use for free! Check out [Fugue](https://icons8.com/music/)!
 
 Oh, and I ended up swithing to cell shading using [Toony Colors Pro 2](https://assetstore.unity.com/packages/vfx/shaders/toony-colors-pro-2-8105) for my graphics, and a lighter background. I kinda like it for now. We will see :)
+
+
+## 21.May 2018 - 22:45
+I made a beam weapon today - a "blue laser". It works, although I think I will need some sort of power consumption or something to prevent it from being way too over powered!
+The code is starting to cry for a refactoring now. There are lots of shortcuts and little thought through solutions I have made that is starting to get in the way of productivity, so we'll see what I do about it. Probably nothing for a while still :)
+
+I also made the map pointers show along the minimap edge instead of the screen edget. I definitley like it bettar that way.

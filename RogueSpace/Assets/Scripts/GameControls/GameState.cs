@@ -30,13 +30,12 @@ public class GameState : MonoBehaviour {
         if (INSTANCE == null)
         {
             Init();
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
-        }
-        DontDestroyOnLoad(gameObject);    
-              
+        }        
     }
 
     public void SaveState()
@@ -57,8 +56,7 @@ public class GameState : MonoBehaviour {
         firebase = FirebaseDatabase.DefaultInstance.RootReference;
 
         itemLibrary.Load();
-        LoadInventory();
-        
+        LoadInventory();        
     }
 
     private void LoadInventory()
@@ -87,11 +85,9 @@ public class GameState : MonoBehaviour {
                     }
 
                     string mainGunId = (string)playergamestate.Child("shipconfig").Child("id").Value;
-                    Debug.Log(mainGunId);
                     foreach (var item in inventory.items)
                     {
-                        Debug.Log(item.GetId());
-                        if (item.GetId().Equals(mainGunId))
+                            if (item.GetId().Equals(mainGunId))
                         {
                             shipConfig.mainWeapon = item.GetComponent<Gun>();
                             break;

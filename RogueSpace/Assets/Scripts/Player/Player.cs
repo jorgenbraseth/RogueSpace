@@ -19,15 +19,16 @@ public class Player : MonoBehaviour {
     public int health;
 
     public int ore;
+
+    [SerializeField]
     private Gun mainGun;
 
-    void Start () {
-        gameState = GameObject.Find("GameState").GetComponent<GameState>();
+    void Awake () {
+        gameState = GameState.Find();
+        
 
         ore = 0;
-        health = maxHealth;
-
-        ConfigureShip();
+        health = maxHealth;        
 	}
 
     public void damage(int amount)
@@ -45,9 +46,12 @@ public class Player : MonoBehaviour {
         level.Died();
     }
     	
-    private void ConfigureShip()
+    public void ConfigureShip(ShipConfig shipConfig, GameState gs)
     {
-        mainGun = Instantiate(gameState.shipConfig.mainWeapon, mainGunMountPoint.transform);
+        Debug.Log(gs);
+        Debug.Log(shipConfig);
+        mainGun = (Gun)gs.itemLibrary.Create(shipConfig.mainWeapon.itemLibraryKey);
+        mainGun.transform.SetParent(mainGunMountPoint.transform);
     }
 
     public void Shoot(Vector3 aim)
