@@ -5,6 +5,9 @@ using UnityEngine;
 public class Enemy : MonoBehaviour, IDamagable {
 
     [SerializeField]
+    private AudioClip deathSound;
+
+    [SerializeField]
     private int maxHealth;
 
     [SerializeField]
@@ -23,7 +26,7 @@ public class Enemy : MonoBehaviour, IDamagable {
 
     private void Start()
     {
-        levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
+        levelManager = LevelManager.Find();
         health = maxHealth;
     }
 
@@ -44,6 +47,7 @@ public class Enemy : MonoBehaviour, IDamagable {
     private void Die()
     {
         SpawnLoot();
+        GameSound.Play(deathSound);
         Destroy(Instantiate(deathEffect, transform.position, transform.rotation),3);        
         Destroy(gameObject);
     }

@@ -33,7 +33,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1262717215138592}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -58,6 +58,8 @@ MonoBehaviour:
   projectile: {fileID: 114277221527508926, guid: fc9818252a17afb4e81b89e4aa9e3153,
     type: 2}
   props:
+    id: 
+    itemKey: 
     fireRate: 0.1
     damage: 1
-    itemKey: 
+  shootSound: {fileID: 8300000, guid: f1364d48e48ea4fdab44868cc9b2a10e, type: 3}

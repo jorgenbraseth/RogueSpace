@@ -16,6 +16,10 @@ public class BlasterShot : IBlasterShot {
     [SerializeField]
     private GameObject deathEffect;
 
+
+    [SerializeField]
+    private AudioClip hitSound;
+
     private float spawnTime;
 
     public override void Configure(int damage)
@@ -44,6 +48,7 @@ public class BlasterShot : IBlasterShot {
         {            
             enemy.Damage(damage, transform.position, transform.forward);
         }
+        GameSound.Play(hitSound);
         Die();
     }
 

@@ -341,6 +341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 317db24a6ad5ae94d9eb645308b5cd7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathSound: {fileID: 8300000, guid: 4a46782b6a4544fa089a35523f50e2a0, type: 3}
   maxHealth: 20
   lootAmount: 3
   specialLoot: []

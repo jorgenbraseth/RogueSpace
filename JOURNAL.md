@@ -181,6 +181,11 @@ Oh, and I ended up swithing to cell shading using [Toony Colors Pro 2](https://a
 
 ## 21.May 2018 - 22:45
 I made a beam weapon today - a "blue laser". It works, although I think I will need some sort of power consumption or something to prevent it from being way too over powered!
-The code is starting to cry for a refactoring now. There are lots of shortcuts and little thought through solutions I have made that is starting to get in the way of productivity, so we'll see what I do about it. Probably nothing for a while still :)
+The code is starting to cry for a refactoring now. There are lots of shortcuts and little thought through solutions I have made that is starting to get in the way of productivity, 
+so we'll see what I do about it. Probably nothing for a while still :)
 
-I also made the map pointers show along the minimap edge instead of the screen edget. I definitley like it bettar that way.
+I also made the map pointers show along the minimap edge instead of the screen edge. I definitley like it better that way.
+
+## 27.May 2018 - 19:05
+Just added some music from the excellent page [Fugue](https://icons8.com/music) and some SFX for enemy deaths, blaster shots, etc.
+Also made the ship A LOT more maneuverable after some feedback from people I have shown the game to.

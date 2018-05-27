@@ -62,3 +62,4 @@ MonoBehaviour:
     itemKey: 
     fireRate: 0.3
     damage: 6
+  shootSound: {fileID: 8300000, guid: 406abe6e803b244eca380af5865dc5cb, type: 3}

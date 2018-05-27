@@ -157,3 +157,4 @@ MonoBehaviour:
   damage: 1
   deathEffect: {fileID: 1762416232247090, guid: ede81f708df20e340842035f9b41c834,
     type: 2}
+  hitSound: {fileID: 8300000, guid: bc3f79aa976ad4b4db5b175e859e4592, type: 3}

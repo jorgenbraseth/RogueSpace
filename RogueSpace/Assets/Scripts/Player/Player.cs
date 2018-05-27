@@ -48,8 +48,6 @@ public class Player : MonoBehaviour {
     	
     public void ConfigureShip(ShipConfig shipConfig, GameState gs)
     {
-        Debug.Log(gs);
-        Debug.Log(shipConfig);
         mainGun = (Gun)gs.itemLibrary.Create(shipConfig.mainWeapon.itemLibraryKey);
         mainGun.transform.SetParent(mainGunMountPoint.transform);
     }

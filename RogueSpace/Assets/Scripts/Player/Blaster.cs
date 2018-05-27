@@ -11,6 +11,9 @@ public class Blaster : Gun {
     [SerializeField]
     private BlasterProperties props;
 
+    [SerializeField]
+    private AudioClip shootSound;
+
     private void Awake()
     {
         props.itemKey = itemLibraryKey;
@@ -23,6 +26,7 @@ public class Blaster : Gun {
     {
         if (Time.time > nextFire)
         {
+            GameSound.Play(shootSound);
             Instantiate(projectile.gameObject, transform.position, Quaternion.LookRotation(aim));
             nextFire = Time.time + props.fireRate;
         }
